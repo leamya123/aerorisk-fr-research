@@ -1,40 +1,36 @@
 # AeroRisk-FR | 法语区航空租赁风险定价研究
 
-**研究原型 v0.1 · 2026-10-15 重新构建版。**
+**研究原型 v0.1 · 2026-10-15 重新构建版。** 本仓库支撑“论文 + 可交互平台”两条工作线，基于华东师范大学本科创新训练项目研究目标，**不是旧聊天中无法取得的原始代码文件**。
 
-本仓库对应华东师范大学本科生创新训练项目《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》，分为两条研究线：
+- **论文线**：ECB→BCEAO/BEAC 的实际政策利率传导；OHADA / UNIDROIT 国别制度事实；有真实资产级数据后才研究实际飞机租金/估值。
+- **平台线**：透明的现金流平衡租金、违约与收回延迟情景压力测试。
 
-- **论文线**：检验 ECB 对 BCEAO/BEAC 货币政策及融资环境的实际传导；系统核查 OHADA / UNIDROIT 制度差异；只有取得真实且有授权的航空资产级数据后才研究市场租金和残值的实证效应。
-- **平台线**：构建透明的现金流折现、违约回收与法律延迟情景压力测试工具，明确标注所有假设。
+## 快速运行
 
-## 接下来要上传的文件
-
-完整初版请保留以下结构：
-- `prototype/index.html`：交互式网页原型
-- `index.html`：GitHub Pages 的跳转首页
-- `src/risk_model.py`：Python 风险定价模型
-- `tests/test_risk_model.py`：7 项单元测试
-- `docs/research_design_v1.md`：论文研究设计
-- `docs/variable_dictionary_v1.csv`：变量字典
-- `docs/research_log.md`：研究日志
-- `data/README.md`、`paper/README.md`：数据及论文管理
-
-**注意：当前 GitHub 仓库尚未上传上述源码。** 请从聊天中下载 `AeroRisk-FR_rebuilt_v0.1.zip`，解压后将 `aerorisk-fr-research/` 文件夹里的内容（而非外层文件夹）上传到仓库根目录，覆盖此 README。
-
-## 科研诚信边界
-
-1. 平台默认购价、折现率、违约概率和法律延迟均为**情景假设**，不是市场报价或司法实测。
-2. 未通过有效的识别策略检验时，不得将 ECB 利率简单称作有效工具变量，或将相关性称作因果。
-3. WJP Civil Justice 指数不等于飞机收回时长。
-4. 2024 年 ECB 开始降息，而 BCEAO 主要政策利率未同步下降；传导关系需要实证检验。
-5. 不向公共仓库上传 WRDS/Cirium 许可限制的数据、个人隐私或机密材料。
-
-## 本地运行
-
-直接打开 `prototype/index.html`；模型测试：
+浏览器打开 [`prototype/index.html`](prototype/index.html)，或用 GitHub Pages 打开根目录 `index.html`（设置 **Settings → Pages → Deploy from a branch → main / (root)**）。静态网页无需安装依赖。
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-平台只用于研究和演示，不构成实际金融报价。
+## 目录
+
+- [`docs/research_design_v1.md`](docs/research_design_v1.md) — 可执行研究设计、论文的实证门槛、需修正的开题表述
+- [`docs/variable_dictionary_v1.csv`](docs/variable_dictionary_v1.csv) — 真实变量与情景变量的分离
+- [`docs/research_log.md`](docs/research_log.md) — 研究日志
+- [`prototype/index.html`](prototype/index.html) — 单文件交互平台
+- [`src/risk_model.py`](src/risk_model.py) — 与前端同一核心公式的 Python 计算器
+- [`tests/test_risk_model.py`](tests/test_risk_model.py) — 自动单元测试
+- [`data/README.md`](data/README.md) — 数据使用与来源管理
+- [`paper/README.md`](paper/README.md) — 论文目录
+
+## 严格的研究诚信约束
+
+1. 网页的预设 **$50m 购置金额、7% 折现率、3% PD、12 个月法律延迟** 全部为 **演示性假设**，并非实际市场或司法统计。
+2. 绝不将模拟输出当作真实交易数据，不称“实际租金”，不称“实证显著因果结果”。
+3. 未验证 IV 排除限制前，不能将 ECB 利率作为已经证明有效的工具变量。
+4. WJP 法治指数不是飞机收回执行周期数据。国别法律差异要结合 OHADA、UNIDROIT 与真实案例。
+5. 2024 年 ECB 开始降息；BCEAO 2024 年主政策利率保持不变。本项目必须检验而非先验地宣称“镜像同步”。
+6. 公共仓库不放 WRDS/Cirium 有授权限制的数据、个人联系方式、证书或未经允许公开的原始文件。
+
+官方来源和问题修订列表见 [`docs/research_design_v1.md`](docs/research_design_v1.md)。
