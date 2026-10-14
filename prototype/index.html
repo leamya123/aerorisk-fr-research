@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AeroRisk-FR · 法语区航空租赁风险实验室</title><style>
+:root{--bg:#f5f8fa;--ink:#142b40;--teal:#0d867e;--deep:#073f50;--border:#dce8ed;--muted:#63798a;--orange:#a86621}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.5}
+a{color:var(--teal)}header{padding:29px max(20px,calc((100% - 1200px)/2));background:linear-gradient(130deg,#092f42,#096c70);color:#fff}header p{max-width:860px;color:#d5e9ec;margin:8px 0 0}
+.eyebrow{font-weight:700;letter-spacing:2px;font-size:11px;color:#78d8c3}.brand{font-size:29px;font-weight:800;letter-spacing:-.5px}.sub{font-size:14px}
+main{max-width:1200px;margin:24px auto;padding:0 18px}.warning{background:#fff7e8;border:1px solid #f0d6a4;color:#78501b;padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:18px}
+.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:22px;box-shadow:0 8px 24px #13314609}.layout{display:grid;grid-template-columns:370px 1fr;gap:18px}.panel h2{font-size:17px;margin:0 0 5px}.hint{color:var(--muted);font-size:12px;margin:0 0 18px}.formrow{display:grid;grid-template-columns:1fr 110px;align-items:center;gap:8px;margin:12px 0}.formrow label{font-size:13px}.formrow small{display:block;color:var(--muted);font-size:11px}input{width:100%;border:1px solid #cddde4;border-radius:8px;padding:8px 10px;text-align:right;font:inherit;color:var(--ink)}input:focus{outline:2px solid #90cec7}input:invalid{border-color:#b55747}
+.hr{margin:19px 0;border:0;border-top:1px solid #e9eef1}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:17px;background:#f3f9f8;border:1px solid #d8ece8;border-radius:12px}.metric .label{font-size:12px;color:#506a76}.metric strong{display:block;color:var(--deep);font-size:26px;letter-spacing:-.7px;font-variant-numeric:tabular-nums}.metric small{color:var(--muted);font-size:11px}.metric.emphasis{background:#0d726c;color:#fff}.metric.emphasis strong,.metric.emphasis .label,.metric.emphasis small{color:#fff}
+.barwrap{margin-top:20px}.bar{height:20px;display:flex;overflow:hidden;border-radius:7px;background:#e1ebee}.bar span:nth-child(1){background:#0e7e7b}.bar span:nth-child(2){background:#7dbbb9}.bar span:nth-child(3){background:#ddb679}.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#556a76;margin:9px 0}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}.compare{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.scenario{padding:14px;border:1px solid #dce9ed;border-radius:10px}.scenario strong{font-size:22px;display:block;color:#155e65}.scenario p{margin:4px 0;font-size:12px;color:var(--muted)}.delta{font-weight:700;color:#a15d26}.foot{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.foot h3{margin:0 0 7px;font-size:15px}.foot p{font-size:13px;color:#506776;margin:0 0 8px}.btn{background:#0b6f69;color:#fff;border:0;border-radius:9px;padding:10px 15px;cursor:pointer}.btn:hover{background:#095854}.err{color:#a12f26;font-size:12px;min-height:18px;margin-top:6px}.mini{color:var(--muted);font-size:12px}footer{max-width:1200px;margin:26px auto 34px;padding:0 18px;font-size:11px;color:#718592}
+@media(max-width:800px){.layout,.foot{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.brand{font-size:24px}header{padding:25px 20px}}@media(max-width:400px){.cards,.compare{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="eyebrow">AIRCRAFT LEASING · RESEARCH PROTOTYPE 0.1</div><div class="brand">AeroRisk-FR <span style="font-size:15px;font-weight:400">/ 风险定价实验室</span></div><p class="sub">货币互联 × 法律执行延迟 × 航空资产现金流：面向 CFA 法郎区跨境航空租赁的透明情景分析工具。</p></header>
+<main><div class="warning"><strong>研究演示 · 非真实报价：</strong>全部预填参数均为虚构的、公开标注的教学情景，不代表市场租金、违约率或司法执行周期。当前页面不连接任何实时数据库；也不把 WJP 分数直接转换为收回天数。</div>
+<div class="layout"><section class="panel"><h2>01 · 情景输入</h2><p class="hint">本阶段统一使用美元计价；资金折现率由用户假设，不等同于 ECB 政策利率。</p>
+<div class="formrow"><label for="price">飞机资产购置价值 <small>百万美元 · illustrative</small></label><input id="price" type="number" value="50" min="0.001" step="1"></div>
+<div class="formrow"><label for="years">租赁期 <small>年</small></label><input id="years" type="number" value="8" min="1" max="30" step="1"></div>
+<div class="formrow"><label for="residual">期末残值 <small>购置价的百分比</small></label><input id="residual" type="number" value="45" min="0" max="100" step="1"></div>
+<div class="formrow"><label for="discount">折现率 <small>年化 % · 假设情景</small></label><input id="discount" type="number" value="7" min="-98" max="100" step="0.25"></div>
+<hr class="hr"><h2>02 · 信用及法律执行假设</h2><p class="hint">此处的法律风险通过违约后的回收延迟及成本进入估值，而非无依据的“司法分数乘数”。</p>
+<div class="formrow"><label for="pd">年违约概率 <small>% · 固定条件概率</small></label><input id="pd" type="number" value="3" min="0" max="100" step="0.25"></div>
+<div class="formrow"><label for="haircut">回收折价 <small>% · 回收时价值折价</small></label><input id="haircut" type="number" value="25" min="0" max="100" step="1"></div>
+<div class="formrow"><label for="delay">法律收回延迟 <small>月 · 情景假设</small></label><input id="delay" type="number" value="12" min="0" max="120" step="1"></div>
+<div class="formrow"><label for="storage">停场及保全月成本 <small>千美元 / 月</small></label><input id="storage" type="number" value="40" min="0" step="5"></div>
+<div class="formrow"><label for="decay">停场年额外价值损耗 <small>% · 情景假设</small></label><input id="decay" type="number" value="2" min="0" max="100" step=".5"></div>
+<div class="err" id="error" role="alert"></div><button class="btn" id="download">导出本次情景（JSON）</button></section>
+<section class="panel"><h2>03 · 现金流估值结果</h2><p class="hint">计算使“预期租金现值 + 存续资产残值现值 + 违约回收现值 = 购置价值”的收支平衡月租金。</p>
+<div class="cards"><div class="metric emphasis"><div class="label">情景化收支平衡月租金</div><strong id="rent">—</strong><small>USD / month · 不是市场租金报价</small></div>
+<div class="metric"><div class="label">月租金系数 LRF</div><strong id="lrf">—</strong><small>月租金 / 购置价值</small></div>
+<div class="metric"><div class="label">租期内累计违约概率</div><strong id="cumPD">—</strong><small>恒定违约概率假设</small></div><div class="metric"><div class="label">月租金 · 复合压力后变化</div><strong id="delta">—</strong><small>折现率 +200bp &amp; 收回延迟 +12月</small></div></div>
+<div class="barwrap"><h2>04 · 估值构成</h2><p class="hint">三项预期现金流的现值占资产购置价的比例（若回收情景为极端值，可能超出常规比例）。</p><div class="bar" aria-label="估值现值构成"><span id="barRent"></span><span id="barResidual"></span><span id="barRecovery"></span></div><div class="legend"><span><i class="dot" style="background:#0e7e7b"></i>存续期租金 <b id="partRent">—</b></span><span><i class="dot" style="background:#7dbbb9"></i>期末残值 <b id="partRes">—</b></span><span><i class="dot" style="background:#ddb679"></i>违约回收 <b id="partRec">—</b></span></div></div>
+<div style="margin-top:19px"><h2>05 · 复合压力测试</h2><p class="hint">下列冲击仅是参数敏感度实验，不是对 ECB 利率或司法时效的预测。</p><div class="compare"><div class="scenario"><span class="mini">基准情景</span><strong id="baseCompare">—</strong><p>输入的折现率及延迟</p></div><div class="scenario"><span class="mini">压力情景</span><strong id="stressCompare">—</strong><p>折现率 +2 个百分点；延迟 +12 月</p></div></div><p class="mini">月租金差额：<span class="delta" id="stressAbsolute">—</span></p></div>
+</section></div>
+<div class="foot"><section class="panel"><h3>研究假设边界</h3><p>① 违约发生在每月末，年度违约概率按恒定风险率换算。② 存续期间按月收取全额租金。③ 违约后停止收租，资产在法律延迟后回收并折价变现。④ 资产正常市场价值在初始购价与期末残值之间线性衰减。</p><p>未纳入税收、税盾、维修储备、合同币种、汇率、真实违约相关性、保险赔付及租赁会计。模型输出仅用于方法验证。</p></section><section class="panel"><h3>真实数据与后续研究</h3><p>当前为“情景参数（scenario assumptions）”；后续将独立接入 ECB、BCEAO、BEAC 官方利率时间序列，对利率传导做实证分析。法律文本来自 OHADA；国别司法代理变量须检验适用性。资产定价校准需要获得合法可使用的真实报价或交易数据。</p><p>模型公开实现：<code>src/risk_model.py</code>；算法测试：<code>tests/test_risk_model.py</code>；研究设计：<code>docs/research_design_v1.md</code>。</p></section></div>
+</main><footer>AeroRisk-FR · Reproducible research prototype · Educational scenario modeling · v0.1 rebuilt 2026-10-15</footer>
+<script>
+'use strict';
+const fields=['price','years','residual','discount','pd','haircut','delay','storage','decay'];
+const $=id=>document.getElementById(id);
+const usd=x=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(x);
+const pct=x=>(100*x).toFixed(2)+'%';
+let current=null;
+function evaluate(v){
+ const n=v.years*12,q=1-Math.pow(1-v.pd/100,1/12),disc=1+v.discount/1200,rv=v.price*1e6*v.residual/100;
+ let factor=0,recoveryPv=0;
+ for(let m=1;m<=n;m++){
+  const surv=Math.pow(1-q,m),prob=Math.pow(1-q,m-1)*q;
+  factor+=surv/Math.pow(disc,m);
+  const value=v.price*1e6+(rv-v.price*1e6)*m/n;
+  const recoverable=Math.max(0,value*(1-v.haircut/100)*Math.pow(1-v.decay/100,v.delay/12)-v.storage*1000*v.delay);
+  recoveryPv+=prob*recoverable/Math.pow(disc,m+v.delay);
+ }
+ const residualPv=Math.pow(1-q,n)*rv/Math.pow(disc,n);
+ const monthly=(v.price*1e6-residualPv-recoveryPv)/factor;
+ return {monthly,lrf:monthly/(v.price*1e6),cumpd:1-Math.pow(1-q,n),rentPv:monthly*factor,residualPv,recoveryPv,price:v.price*1e6};
+}
+function render(){
+ const v={};fields.forEach(id=>v[id]=Number($(id).value));
+ const valid=fields.every(id=>$(id).value.trim()!==''&&Number.isFinite(v[id]));
+ if(!valid||v.price<=0||v.years<1||v.years>30||!Number.isInteger(v.years)||v.discount<=-99||v.discount>100||v.delay<0||v.delay>108||!Number.isInteger(v.delay)||v.storage<0||['residual','pd','haircut','decay'].some(k=>v[k]<0||v[k]>100)){$('error').textContent='请检查输入范围：租赁期为1–30整年、延迟为0–108整月、比例为0–100%，购置价必须大于0。';current=null;return;}
+ $('error').textContent='';
+ const r=evaluate(v),st=evaluate({...v,discount:v.discount+2,delay:v.delay+12});
+ $('rent').textContent=usd(r.monthly);$('lrf').textContent=pct(r.lrf);$('cumPD').textContent=pct(r.cumpd);
+ const change=100*(st.monthly/r.monthly-1);$('delta').textContent=(change>=0?'+':'')+change.toFixed(2)+'%';
+ $('baseCompare').textContent=usd(r.monthly);$('stressCompare').textContent=usd(st.monthly);$('stressAbsolute').textContent=(st.monthly>=r.monthly?'+':'')+usd(st.monthly-r.monthly);
+ const values=[r.rentPv,r.residualPv,r.recoveryPv];
+ ['barRent','barResidual','barRecovery'].forEach((id,i)=>$(id).style.width=(100*values[i]/r.price)+'%');
+ ['partRent','partRes','partRec'].forEach((id,i)=>$(id).textContent=pct(values[i]/r.price));
+ current={label:'Illustrative hypothetical scenario, not observed market data',inputs:v,baseline:r,stress:st,assumptions:['constant conditional monthly default hazard','linear market-value decay','post-default recovery after legal delay','monthly discount approximation']};
+}
+fields.forEach(id=>$(id).addEventListener('input',render));
+$('download').addEventListener('click',()=>{if(!current)return;const blob=new Blob([JSON.stringify(current,null,2)],{type:'application/json'});const a=document.createElement('a');const url=URL.createObjectURL(blob);a.href=url;a.download='aerorisk-fr-scenario.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+render();
+</script></body></html>
