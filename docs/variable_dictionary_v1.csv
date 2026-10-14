@@ -1,0 +1,20 @@
+﻿variable,description,unit,frequency,geography,origin_type,primary_source,status,note
+ecb_dfr,ECB deposit facility rate,% per annum,effective-date/monthly,euro area,observed official,ECB key ECB interest rates,to_collect,different from ECB MRO
+ecb_mro,ECB main refinancing rate,% per annum,effective-date/monthly,euro area,observed official,ECB key ECB interest rates,to_collect,rate instrument changed positioning 2024
+bceao_tms,BCEAO minimum bid policy rate,% per annum,effective-date/monthly,WAEMU,observed official,BCEAO monthly statistical bulletin,to_collect,2024 remained 3.5% per official annual report
+beac_tiaO,BEAC policy tender rate,% per annum,effective-date/monthly,CEMAC,observed official,BEAC rate decisions,to_collect,confirm series/instrument continuity
+cfa_xof_eur,XOF / EUR official parity,XOF per EUR,regime,WAEMU,observed official,BCEAO franc CFA history,verified_regime,655.957 XOF/EUR fixed parity; not market volatility
+cfa_xaf_eur,XAF / EUR official parity,XAF per EUR,regime,CEMAC,observed official,BEAC monetary pages,to_verify,distinguish XAF and XOF
+wjp_civil,WJP Civil Justice country score,0–1,annual,country,observed proxy,WJP index,to_collect,not aircraft repossession duration
+ohada_enforce_2024,OHADA 2023 revised enforcement act in force,binary/dates,event,OHADA,legal fact,OHADA official enforcement page,verified,entered into force 2024-02-16
+ctc_aircraft_status,Aircraft Protocol state party / declarations,categorical,event,country,legal fact,UNIDROIT Aircraft Protocol states parties,to_collect,treat accession and declarations country by country
+actual_lease_quote,asset-level market lease rate,USD/month or contract currency,transaction,country-aircraft,observed restricted,Cirium/lessor disclosures subject to licence,not_available,no transactions in project source files
+aircraft_price,illustrative acquisition amount,USD,scenario,hypothetical,assumption,user input,prototype_only,not OEM catalogue price
+asset_residual,expected residual percentage of purchase price,%,scenario,hypothetical,assumption,user input,prototype_only,not market appraiser valuation
+discount_rate,illustrative annual discount rate,%,scenario,hypothetical,assumption,user input,prototype_only,NOT ECB policy rate
+annual_pd,illustrative constant annual default probability,%,scenario,hypothetical,assumption,user input,prototype_only,requires airline credit data to calibrate
+recovery_haircut,illustrative asset recovery haircut,%,scenario,hypothetical,assumption,user input,prototype_only,separate from WJP proxy
+legal_delay,assumed month gap from default to recovered asset,months,scenario,hypothetical,assumption,user input,prototype_only,12/18/36 months are hypothetical scenarios only
+storage_cost,assumed grounding/asset preservation cost per month,USD,scenario,hypothetical,assumption,user input,prototype_only,not operationally verified
+grounded_decay,additional asset depreciation due to grounding,% / year,scenario,hypothetical,assumption,user input,prototype_only,illustrative
+required_monthly_rent,model-implied break-even monthly rent,USD/month,calculated,hypothetical,simulation,src/risk_model.py,prototype_only,do not label observed market rate
