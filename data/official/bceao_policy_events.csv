@@ -1,0 +1,11 @@
+effective_date,minimum_bid_rate_pct,marginal_lending_rate_pct,source_url
+2016-12-16,2.5,4.5,https://bceao.int/sites/default/files/2026-04/Bulletin-mensuel-des-statistiques-F%C3%A9vrier-2026.pdf
+2020-06-24,2,4,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2022-06-16,2.25,4.25,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2022-09-16,2.5,4.5,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2022-12-16,2.75,4.75,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2023-03-16,3,5,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2023-09-16,3.25,5.25,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2023-12-16,3.5,5.5,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2025-06-16,3.25,5.25,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
+2026-03-16,3,5,https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf
