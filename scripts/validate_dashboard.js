@@ -15,7 +15,7 @@ const vm = require('node:vm');
 
 const ROOT = path.resolve(__dirname, '..');
 const PAGES = ['index.html', 'prototype/index.html', 'macro/index.html',
-               'transmission/index.html', 'annual/index.html'];
+               'transmission/index.html', 'annual/index.html', 'quarterly/index.html'];
 
 function getScripts(relativePath) {
   const html = fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
@@ -73,6 +73,27 @@ async function main() {
     throw new Error('Annual dashboard load/parse failed: '+elements.status?.textContent);
   }
   console.log('Dashboard smoke OK: two SVG charts, seven rate rows and success status.');
+  const quarterSrc=getScripts('quarterly/index.html')[0];
+  if (!quarterSrc) throw new Error('quarterly/index.html missing script');
+  const quarterNodes={};
+  const quarterDom={getElementById(id) {return quarterNodes[id]??(quarterNodes[id]={innerHTML:'',textContent:''});}};
+  const quarterCsv=fs.readFileSync(path.join(ROOT,'data/processed/quarterly_policy_lending_panel_v1.csv'),'utf8');
+  const quarterFetch=async (url)=>{
+    if(url!=='../data/processed/quarterly_policy_lending_panel_v1.csv')throw new Error('Unexpected URL '+url);
+    return {ok:true,text:async()=>quarterCsv};
+  };
+  const quarterDone=vm.runInNewContext(quarterSrc,{document:quarterDom,fetch:quarterFetch,console},{filename:'quarterly/index.html',timeout:3000});
+  await quarterDone;
+  if(!quarterNodes.loanChart?.innerHTML.includes('<polyline') || !quarterNodes.policyChart?.innerHTML.includes('<polyline')){
+    throw new Error('Quarterly charts failed to render');
+  }
+  if(!quarterNodes.rows?.innerHTML.includes('2025-Q1') || !quarterNodes.rows?.innerHTML.includes('2026-Q2')){
+    throw new Error('Quarterly data table failed to render');
+  }
+  if(!quarterNodes.status?.textContent.includes('成功读取 26')){
+    throw new Error('Quarterly panel not loaded: '+quarterNodes.status?.textContent);
+  }
+  console.log('Quarterly dashboard smoke OK: two SVG charts and 26-quarter data table.');
   console.log('Validated '+total+' inline JavaScript blocks across '+PAGES.length+' HTML pages.');
 }
 main().catch((error) => {console.error(error);process.exitCode=1;});
