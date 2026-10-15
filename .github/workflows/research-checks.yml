@@ -1,0 +1,24 @@
+name: Research validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild policy panel
+        run: python src/build_macro_panel.py
+      - name: Verify generated data is committed consistently
+        run: git diff --exit-code -- data/processed/central_bank_policy_monthly_v1.csv
+      - name: Unit and data integrity tests
+        run: python -m unittest discover -s tests -v
