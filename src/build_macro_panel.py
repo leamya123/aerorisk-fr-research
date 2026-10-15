@@ -49,7 +49,7 @@ def build(start=(2020, 1), end=(2026, 9), output=OUT):
     bceao = read_events(BCEAO, ["minimum_bid_rate_pct", "marginal_lending_rate_pct"])
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["month_end", "ecb_deposit_facility_pct", "ecb_mro_pct",
                          "bceao_minimum_bid_pct", "bceao_marginal_lending_pct"])
         count = 0
