@@ -33,5 +33,11 @@ jobs:
         run: python src/build_annual_lending_summary.py
       - name: Verify annual summary reproducibility
         run: git diff --exit-code -- data/processed/annual_lending_descriptives_v1.json
+      - name: Rebuild continuous quarterly lending/policy panel
+        run: python src/build_quarterly_panel.py
+      - name: Verify quarterly panel reproduces exactly
+        run: git diff --exit-code -- data/processed/quarterly_policy_lending_panel_v1.csv
+      - name: Exploratory noncausal lag diagnostics
+        run: python src/explore_quarterly_lags.py
       - name: Unit and data integrity tests
         run: python -m unittest discover -s tests -v
