@@ -1,0 +1,20 @@
+{
+  "auction_count": 21,
+  "bank_lending_quarter_count": 6,
+  "auction_2024_07_rate_pct": 5.5,
+  "auction_2026_03_rate_pct": 3.577,
+  "auction_change_2024_07_to_2026_03_bp": -192.3,
+  "policy_bceao_2024_07_pct": 3.5,
+  "policy_bceao_2026_03_pct": 3,
+  "policy_change_bp": -50,
+  "auction_minus_policy_spread_2024_07_bp": 200,
+  "auction_minus_policy_spread_2026_03_bp": 57.7,
+  "bank_uemoa_2024_q4_pct": 6.97,
+  "bank_uemoa_2026_q1_pct": 6.72,
+  "bank_uemoa_change_2024q4_to_2026q1_bp": -25,
+  "bank_senegal_2025_q3_pct": 5.8,
+  "bank_senegal_2025_q4_pct": 6.45,
+  "bank_cote_divoire_2025_q3_pct": 6.22,
+  "bank_cote_divoire_2025_q4_pct": 6.07,
+  "note": "Descriptive endpoint differences, not monetary policy causal effects, exchange rate pass-through or aircraft leasing rates."
+}
