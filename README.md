@@ -7,6 +7,7 @@
 ## 在线演示
 
 - **[AeroRisk-FR 风险模拟器](https://leamya123.github.io/aerorisk-fr-research/prototype/)** — 假设情景的预期现金流、月租金与法律延迟压力测试，**不等于市场报价**
+- **[2020Q1—2026Q2 连续季度实证数据库](https://leamya123.github.io/aerorisk-fr-research/quarterly/)** — UEMOA/塞内加尔/科特迪瓦 26 季银行贷款成本，附所选公报版本、季末 ECB/BCEAO 及第一差分
 - **[2020–2025 年度信贷数据](https://leamya123.github.io/aerorisk-fr-research/annual/)** — 6 年 × 7 组 BCEAO 官方银行信贷成本系列（UEMOA、科特迪瓦、塞内加尔、贷款用途）
 - **[真实融资传导观察](https://leamya123.github.io/aerorisk-fr-research/transmission/)** — 官方 BCEAO 一周流动性招标利率与 UEMOA / 塞内加尔 / 科特迪瓦银行贷款利率（分别展示月度、季度数据）
 - **[真实宏观利率观察](https://leamya123.github.io/aerorisk-fr-research/macro/)** — ECB 与 BCEAO 官方利率生效日期整理、月末对比图和可下载的可复现 CSV
@@ -31,6 +32,10 @@
 - `data/official/bceao_policy_events.csv`：BCEAO 日期生效数据与官网链接
 - `data/official/README.md`：数据转录来源、口径、待核查项
 - `data/processed/central_bank_policy_monthly_v1.csv`：加工后的月末值
+- `data/official/bceao_lending_quarterly_2020q1_2026q2_selected_vintages.csv`：26 季度连续贷款利率（来源版本可追溯）
+- `data/processed/quarterly_policy_lending_panel_v1.csv`：贷款利率与 ECB/BCEAO 季末政策利率合并数据
+- `src/build_quarterly_panel.py`：季度面板重建；`src/explore_quarterly_lags.py`：非因果相关诊断
+- `docs/quarterly_lending_panel_audit_v1.md`：不同公报数字冲突与修订清单
 - `data/official/bceao_annual_lending_2020_2025.csv`：BCEAO 2025 年年度报告的 2020—2025 回溯加权贷款利率
 - `src/build_annual_lending_summary.py`：自动计算国别、贷款类型 2024—2025 变化量
 - `data/official/bceao_weekly_auction_monthly.csv`：BCEAO 一周流动性招标利率，2024-07 至 2026-03
@@ -49,6 +54,8 @@
 需要 Python 3.9+，不要求任何第三方 Python 依赖：
 
 ```bash
+python src/build_quarterly_panel.py
+python src/explore_quarterly_lags.py
 python src/build_annual_lending_summary.py
 python src/build_macro_panel.py
 python src/build_financing_summary.py
