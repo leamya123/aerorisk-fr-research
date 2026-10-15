@@ -1,0 +1,63 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AeroRisk-FR · 融资成本传导观察</title><style>
+:root{--bg:#f4f8fa;--teal:#0b7e79;--orange:#ce8647;--ink:#183747;--blue:#4974a2;--border:#dce8ee;--sub:#637b85}*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,'Microsoft YaHei',sans-serif;color:var(--ink);background:var(--bg)}
+header{background:linear-gradient(120deg,#0c3b51,#137d77);color:white;padding:28px max(18px,calc((100% - 1040px)/2))}
+header a{color:#d0f3ef;text-decoration:underline;font-size:13px}h1{font-size:27px;margin:14px 0 7px}header p{color:#daebec;max-width:900px;line-height:1.6;font-size:14px}
+main{max-width:1090px;padding:22px;margin:auto}.info{padding:13px 15px;border:1px solid #eedbb5;background:#fff8e9;color:#785429;border-radius:10px;line-height:1.65;font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:19px 0}.metric,.card{background:#fff;border:1px solid var(--border);border-radius:13px;padding:20px;box-shadow:0 6px 18px #17344908}.metric small{color:#5d7882;font-size:12px}.metric strong{display:block;font-size:26px;color:#0d6967;margin:5px 0}.metric span{font-size:12px;color:#647b82}.card{margin:16px 0}h2{font-size:18px;margin:0 0 8px}.caption{color:var(--sub);line-height:1.65;font-size:12px}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:11px 0}a.download{padding:8px 11px;border:1px solid #d5e3e8;border-radius:8px;background:white;color:#116f74;font-size:13px;text-decoration:none}
+.legend{display:flex;gap:18px;flex-wrap:wrap;color:#526974;font-size:12px;margin:12px 0}.legend i{display:inline-block;width:18px;height:4px;border-radius:3px;vertical-align:middle;margin-right:5px}
+svg{display:block;width:100%;height:auto;border:1px solid #e4edf0;border-radius:10px;background:#fff}.foot{font-size:13px;line-height:1.8;color:#486575}.foot p{margin:0 0 10px}.foot a{color:#147c76}.error{color:#a03c22}
+@media(max-width:650px){.metrics{grid-template-columns:1fr}.card{padding:16px}h1{font-size:22px}}
+</style></head><body>
+<header><a href="../macro/">← 返回 ECB × BCEAO 政策利率平台</a><h1>融资成本传导 · 第二阶段数据实验室</h1><p>不是简单地看央行加息与降息：进一步区分 BCEAO 政策利率、央行一周流动性注入操作成交利率、区域银行客户的平均贷款利率。观察政策变化是否与资金价格的实际调整同步。</p></header>
+<main><div class="info"><b>学术口径：</b>本页数据直接录自 BCEAO《2026 年第 1 季度统计公报》表 1.2 与表 3.1。月度资金投放操作成交利率与季度银行客户平均贷款利率属于**不同样本与频率**。均不等同于航空租赁公司的资金成本或飞机实际租金；图表只支持描述性观察，不能用来断言因果传导强度。</div>
+<div class="metrics"><section class="metric"><small>一周流动性操作加权利率变化</small><strong>−192.3 bp</strong><span>2024.07：5.500% → 2026.03：3.577%</span></section>
+<section class="metric"><small>BCEAO 最低投标政策利率变化</small><strong>−50 bp</strong><span>同一时间窗口：3.50% → 3.00%</span></section>
+<section class="metric"><small>UEMOA 银行客户平均贷款利率变化</small><strong>−25 bp</strong><span>2024Q4：6.97% → 2026Q1：6.72%；不同频率</span></section></div>
+<section class="card"><h2>图 A · BCEAO 政策利率 vs 央行一周流动性注入操作成交利率</h2>
+<p class="caption">月度数据：2024.07—2026.03，共 21 个月。月末政策利率是存量政策水平；成交利率是该月 BCEAO 一周流动性招标操作的月度统计。**不是银行间拆借利率。**</p>
+<div class="controls"><a class="download" href="../data/official/bceao_weekly_auction_monthly.csv" download>下载官方表 1.2 数据 CSV</a><a class="download" href="../data/processed/central_bank_policy_monthly_v1.csv" download>下载政策利率月末 CSV</a></div>
+<div class="legend"><span><i style="background:#0d8781"></i>央行一周流动性操作加权利率</span><span><i style="background:#ce8647"></i>BCEAO 最低投标利率 TMS</span></div>
+<svg id="monthChart" viewBox="0 0 980 350" role="img" aria-label="月度成交加权利率和BCEAO政策利率对比图"><text x="490" y="170" text-anchor="middle" fill="#8aa0a9">正在读取 CSV…</text></svg><p class="caption" id="monthStatus"></p>
+</section>
+<section class="card"><h2>图 B · 银行客户平均贷款利率：区域与国别差异</h2>
+<p class="caption">季度数据：2024Q4—2026Q1，共 6 期；官方表 3.1 期间平均值。科特迪瓦与塞内加尔仅用于展示国家间融资条件差异，不能代表这两个国家的航空企业贷款利率。</p>
+<div class="controls"><a class="download" href="../data/official/bceao_bank_lending_quarterly.csv" download>下载官方表 3.1 数据 CSV</a></div>
+<div class="legend"><span><i style="background:#0d8781"></i>UEMOA 总体</span><span><i style="background:#ce8647"></i>科特迪瓦</span><span><i style="background:#4974a2"></i>塞内加尔</span></div>
+<svg id="quarterChart" viewBox="0 0 980 350" role="img" aria-label="UEMOA 科特迪瓦和塞内加尔季度银行客户贷款利率对比"><text x="490" y="170" text-anchor="middle" fill="#8aa0a9">正在读取 CSV…</text></svg><p class="caption" id="quarterStatus"></p>
+</section>
+<section class="card foot"><h2>如何写进论文</h2><p><b>可保留的研究发现：</b>从官方统计表看，BCEAO 银行流动性操作成交利率在 2024 年 7 月至 2026 年 3 月间的调整幅度大于同期政策最低投标利率的净变化；区域银行客户平均贷款利率在 2024 年第四季度至 2026 年第一季度仅下降 25bp。这些时间窗口并非同频、同起点的政策反应估计。</p>
+<p><b>下一步方法：</b>扩充 2020—2026 年银行贷款利率和银行间利率数据，对齐季度数据，再进行时序描述、控制宏观条件的滞后模型及稳健性分析。不要在数据量仅有 6 个季度时进行看似精确的高维回归。</p>
+<p><b>证据与局限：</b>2026Q1 的银行平均贷款利率在原报告中标为暂定；成交利率和客户贷款利率反映不同机制，还需要行业/航司融资观测来研究航空租赁。<a href="https://www.bceao.int/sites/default/files/2026-06/Bulletin-Trimestriel-des-Statistiques-mars-2026.pdf" target="_blank" rel="noopener">BCEAO 官方 PDF（印刷页码 4、12）</a> · <a href="../docs/financing_data_sources_v1.md">研究变量与出处说明</a></p></section>
+</main>
+<script>
+const c=(s)=>s.split(/\r?\n/).filter(Boolean),safe=t=>String(t).replaceAll('&','&amp;').replaceAll('<','&lt;');
+const parse=text=>{const [head,...lines]=c(text.trim());const keys=head.split(',');return lines.map(x=>Object.fromEntries(x.split(',').map((v,i)=>[keys[i],v])))};
+const get=async p=>{const r=await fetch(p);if(!r.ok)throw Error('数据请求 '+r.status);return parse(await r.text())};
+function plot(id,rows,fields,colors,options={}){
+  const svg=document.getElementById(id),L=60,R=22,T=22,B=48,W=980,H=350,ww=W-L-R,hh=H-T-B;
+  const values=rows.flatMap(row=>fields.map(f=>Number(row[f]))),lower=options.min??Math.floor(Math.min(...values)-.5),upper=options.max??Math.ceil(Math.max(...values)+.5);
+  const x=i=>L+(rows.length===1?0:i/(rows.length-1))*ww,y=v=>T+(upper-v)/(upper-lower)*hh;
+  let shapes='';
+  for(let tick=lower;tick<=upper;tick++){shapes+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(tick)+'" y2="'+y(tick)+'" stroke="#e9f0f2"/><text x="'+(L-10)+'" y="'+(y(tick)+4)+'" text-anchor="end" fill="#70858d" font-size="12">'+tick+'</text>'}
+  for(let i=0;i<rows.length;i+=(rows.length>10?4:1)){shapes+='<text x="'+x(i)+'" y="'+(H-23)+'" text-anchor="middle" fill="#70858d" font-size="12">'+safe(options.label(rows[i]))+'</text>'}
+  fields.forEach((f,ix)=>{
+    const points=rows.map((r,i)=>x(i)+','+y(Number(r[f]))).join(' ');
+    shapes+='<polyline fill="none" stroke="'+colors[ix]+'" stroke-width="3" points="'+points+'"/>';
+    if(rows.length<=9)rows.forEach((r,i)=>shapes+='<circle cx="'+x(i)+'" cy="'+y(Number(r[f]))+'" r="4" fill="'+colors[ix]+'"/>');
+  });
+  shapes+='<text x="'+(L+6)+'" y="14" fill="#536975" font-size="13">Annualized rate (%)</text>';
+  svg.innerHTML=shapes;
+}
+(async()=>{try{
+ const [monthly,policy,bank]=await Promise.all([get('../data/official/bceao_weekly_auction_monthly.csv'),get('../data/processed/central_bank_policy_monthly_v1.csv'),get('../data/official/bceao_bank_lending_quarterly.csv')]);
+ const pm=Object.fromEntries(policy.map(x=>[x.month_end.slice(0,7),x]));
+ const joined=monthly.map(m=>({...m,bceao_minimum_bid_pct:pm[m.month]?.bceao_minimum_bid_pct}));
+ if(joined.some(x=>!x.bceao_minimum_bid_pct))throw Error('政策月份对齐失败');
+ plot('monthChart',joined,['one_week_auction_weighted_average_pct','bceao_minimum_bid_pct'],['#0d8781','#ce8647'],{label:r=>r.month});
+ plot('quarterChart',bank,['uemoa_avg_bank_lending_pct','cote_divoire_avg_bank_lending_pct','senegal_avg_bank_lending_pct'],['#0d8781','#ce8647','#4974a2'],{min:5,max:8,label:r=>r.quarter.replace('-','')});
+ document.getElementById('monthStatus').textContent='已加载：'+monthly.length+' 个月度官方表格记录，按月份与 BCEAO 政策利率对齐';
+ document.getElementById('quarterStatus').textContent='已加载：'+bank.length+' 个季度 × 3 个国别/区域系列；2026Q1 为暂定值';
+}catch(e){document.getElementById('monthStatus').className='error';document.getElementById('monthStatus').textContent='官方数据加载失败：'+e.message;document.getElementById('quarterStatus').textContent='请稍后刷新，或检查 GitHub Pages 部署状态'}})();
+</script></body></html>
