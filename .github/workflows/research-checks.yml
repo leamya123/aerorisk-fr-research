@@ -24,5 +24,9 @@ jobs:
         run: python src/build_financing_summary.py
       - name: Verify BCEAO financing statistics are committed consistently
         run: git diff --exit-code -- data/processed/financing_descriptives_v1.json
+      - name: Rebuild BCEAO six-year annual banking data summary
+        run: python src/build_annual_lending_summary.py
+      - name: Verify annual summary reproducibility
+        run: git diff --exit-code -- data/processed/annual_lending_descriptives_v1.json
       - name: Unit and data integrity tests
         run: python -m unittest discover -s tests -v
