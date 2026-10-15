@@ -1,36 +1,60 @@
-# AeroRisk-FR | 法语区航空租赁风险定价研究
+# AeroRisk-FR · 法语区航空租赁风险研究
 
-**研究原型 v0.1 · 2026-10-15 重新构建版。** 本仓库支撑“论文 + 可交互平台”两条工作线，基于华东师范大学本科创新训练项目研究目标，**不是旧聊天中无法取得的原始代码文件**。
+**2026-10-15 · Open research prototype v0.2 (宏观数据模块 + 风险模拟器)**
 
-- **论文线**：ECB→BCEAO/BEAC 的实际政策利率传导；OHADA / UNIDROIT 国别制度事实；有真实资产级数据后才研究实际飞机租金/估值。
-- **平台线**：透明的现金流平衡租金、违约与收回延迟情景压力测试。
+这个公开仓库用于完成本科创新训练项目《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》。
 
-## 快速运行
+## 在线演示
 
-浏览器打开 [`prototype/index.html`](prototype/index.html)，或用 GitHub Pages 打开根目录 `index.html`（设置 **Settings → Pages → Deploy from a branch → main / (root)**）。静态网页无需安装依赖。
+- **[AeroRisk-FR 风险模拟器](https://leamya123.github.io/aerorisk-fr-research/prototype/)** — 假设情景的预期现金流、月租金与法律延迟压力测试，**不等于市场报价**
+- **[真实宏观利率观察](https://leamya123.github.io/aerorisk-fr-research/macro/)** — ECB 与 BCEAO 官方利率生效日期整理、月末对比图和可下载的可复现 CSV
+
+## 研究状态（仅描述已完成成果）
+
+| 模块 | 进展 | 数据类型 |
+|---|---|---|
+| ECB DFR/MRO | ✅ 官方政策利率事件 21 条 | 真实官方公布值、手动转录 |
+| BCEAO TMS/边际贷款 | ✅ 官方政策利率事件 10 条 | 真实官方公布值、手动转录 |
+| 月末央行政策利率面板 | ✅ 2020-01 至 2026-09，81 个月 | 由上两份事件 CSV 按生效日生成 |
+| BEAC 历史政策利率 | ⏳ 官方入口已定位，未加入时间序列 | 尚未核验完整历史表 |
+| OHADA 执行制度 | ⏳ 待法律条文逐条标注 | 2024 年生效的新执行法已确认为基本资料 |
+| 飞机真实租金/残值 | ❌ 暂无合法可公开的交易级数据库 | 不得假装已有数据 |
+| 风险模拟 | ✅ 可交互、可导出、可单元测试 | 假设情景，非观测数据 |
+
+## 项目目录
+
+- `prototype/index.html`：租赁风险交互网页（假设参数）
+- `macro/index.html`：官方宏观数据走势图（非因果结论）
+- `data/official/ecb_policy_events.csv`：ECB 日期生效数据与官网链接
+- `data/official/bceao_policy_events.csv`：BCEAO 日期生效数据与官网链接
+- `data/official/README.md`：数据转录来源、口径、待核查项
+- `data/processed/central_bank_policy_monthly_v1.csv`：加工后的月末值
+- `src/build_macro_panel.py`：只用 Python 标准库重建 81 个月数据
+- `src/risk_model.py`：飞机租赁模拟模型
+- `tests/`：模型与官方利率数据自动校验
+- `docs/research_design_v1.md`：论文研究问题与识别边界
+- `docs/variable_dictionary_v1.csv`：数据字典
+- `docs/research_log.md`：研究日志
+- `paper/`：论文工作区
+
+## 本地复现
+
+需要 Python 3.9+，不要求任何第三方 Python 依赖：
 
 ```bash
+python src/build_macro_panel.py
 python -m unittest discover -s tests -v
 ```
 
-## 目录
+`src/build_macro_panel.py` 将从两份官方政策事件 CSV 重建月末政策面板；提交的面板文件必须与再生成输出逐字节一致。
 
-- [`docs/research_design_v1.md`](docs/research_design_v1.md) — 可执行研究设计、论文的实证门槛、需修正的开题表述
-- [`docs/variable_dictionary_v1.csv`](docs/variable_dictionary_v1.csv) — 真实变量与情景变量的分离
-- [`docs/research_log.md`](docs/research_log.md) — 研究日志
-- [`prototype/index.html`](prototype/index.html) — 单文件交互平台
-- [`src/risk_model.py`](src/risk_model.py) — 与前端同一核心公式的 Python 计算器
-- [`tests/test_risk_model.py`](tests/test_risk_model.py) — 自动单元测试
-- [`data/README.md`](data/README.md) — 数据使用与来源管理
-- [`paper/README.md`](paper/README.md) — 论文目录
+## 科研边界
 
-## 严格的研究诚信约束
+1. ECB 与 BCEAO 数据是**官方政策利率水平**的人工转录，不是政策意外冲击的识别结果；月末值不是月平均值。
+2. 固定汇率制度不必然导致 BCEAO 或 BEAC 与 ECB 同步调整政策利率。
+3. 不能只因“欧央行相对非洲航司外生”就将其视为满足排除限制的工具变量；真实市场租金因变量尚未获取。
+4. WJP 的 Civil Justice 分数 ≠ 飞机司法收回延迟，12/18/36 个月等暂仅为假设情景。
+5. 严禁将 WRDS、Cirium 等受许可的数据，个人信息或未公开采访材料上传公共仓库。
+6. 论文证据与平台情景模拟始终分开展示，引用时注明出处、查询日期及处理脚本。
 
-1. 网页的预设 **$50m 购置金额、7% 折现率、3% PD、12 个月法律延迟** 全部为 **演示性假设**，并非实际市场或司法统计。
-2. 绝不将模拟输出当作真实交易数据，不称“实际租金”，不称“实证显著因果结果”。
-3. 未验证 IV 排除限制前，不能将 ECB 利率作为已经证明有效的工具变量。
-4. WJP 法治指数不是飞机收回执行周期数据。国别法律差异要结合 OHADA、UNIDROIT 与真实案例。
-5. 2024 年 ECB 开始降息；BCEAO 2024 年主政策利率保持不变。本项目必须检验而非先验地宣称“镜像同步”。
-6. 公共仓库不放 WRDS/Cirium 有授权限制的数据、个人联系方式、证书或未经允许公开的原始文件。
-
-官方来源和问题修订列表见 [`docs/research_design_v1.md`](docs/research_design_v1.md)。
+**下一步：**核验 BEAC 政策决议序列；加入 BCEAO 实际市场融资成本、欧元区宏观控制变量；严格区分政策利率共同变化与因果冲击传导。
