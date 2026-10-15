@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AeroRisk-FR | 2020–2025 银行融资成本研究</title><style>
+:root{--bg:#f3f7f9;--dark:#0b3549;--teal:#0e7a76;--orange:#c0783b;--blue:#517fb5;--muted:#596e7a}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Microsoft YaHei',sans-serif;background:var(--bg);color:#183949}
+header{background:linear-gradient(110deg,#10384e,#147d74);padding:33px max(20px,calc((100% - 1080px)/2));color:#fff}header a{color:#ccece9;font-size:13px}
+h1{font-size:29px;margin:15px 0 8px}header p{max-width:900px;color:#d9f0ed;line-height:1.7;font-size:14px}
+main{max-width:1120px;margin:auto;padding:24px 20px 35px}
+.panel{border:1px solid #dfe9ed;border-radius:15px;background:white;box-shadow:0 8px 24px #152b3908;padding:22px;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 8px}p{line-height:1.6}.note{font-size:13px;color:var(--muted)}.banner{border-radius:12px;background:#fff7e9;border:1px solid #efdcbb;padding:14px;color:#77512e;margin-bottom:18px;font-size:13px;line-height:1.6}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#edf8f5;border:1px solid #d8ece8;border-radius:12px;padding:17px}
+.stat small{display:block;color:#526f78;font-size:12px}.stat strong{color:#0c6865;font-size:27px;display:block;margin:5px 0}.stat span{font-size:12px;color:#597681}
+.legend{display:flex;gap:19px;flex-wrap:wrap;margin:13px 0;font-size:13px;color:#526774}
+.legend i{width:19px;height:4px;display:inline-block;margin-right:6px;border-radius:5px;vertical-align:middle}
+.svg{background:#fff;width:100%;height:auto;border:1px solid #e5edf1;border-radius:10px;display:block}
+a.download{display:inline-block;padding:9px 12px;border:1px solid #d1e4e6;border-radius:9px;text-decoration:none;color:var(--teal);font-size:12px;margin:9px 6px 12px 0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px;min-width:600px}th,td{text-align:right;padding:10px 9px;border-bottom:1px solid #e8eef1;font-variant-numeric:tabular-nums}td:first-child,th:first-child{text-align:left}th{color:#4a6873;background:#f3f8f9}.pos{color:#9b562b;font-weight:700}.neg{color:#0e786d;font-weight:700}
+footer{color:#71848b;font-size:12px;line-height:1.6}
+@media(max-width:730px){h1{font-size:23px}.statgrid{grid-template-columns:1fr}.panel{padding:16px}}
+</style></head><body><header><a href="../transmission/">← 返回短期流动性与融资条件实验室</a><h1>BCEAO 银行融资条件 · 2020—2025</h1><p>年度研究数据 v1.0：六年连续观察 · UEMOA 与塞内加尔、科特迪瓦 · 企业贷款与设备、出口融资分类。全部利率来自 BCEAO 2025 年银行条件年度报告，逐个变量标注来源。</p></header>
+<main>
+<div class="banner"><b>请先理解：</b>这里的 6 个年度点是真实公布的**新发放银行贷款加权平均利率**，不是飞机租金，也不是同一笔贷款在六年内的融资成本。不同国家与贷款类型在样本构成上可能存在差异，不能凭图断言 ECB 已造成特定幅度的贷款利率变化。</div>
+<div class="statgrid"><div class="stat"><small>2025 UEMOA 平均贷款利率</small><strong>6.69%</strong><span>比 2024 年下降 7bp</span></div><div class="stat"><small>2025 科特迪瓦 / 塞内加尔</small><strong>6.26 / 5.98%</strong><span>当年变动方向：科特迪瓦 ↓19bp；塞内加尔 ↑5bp</span></div><div class="stat"><small>2025 区域非金融企业贷款</small><strong>6.45%</strong><span>比 2024 年上升 11bp</span></div></div>
+<section class="panel"><h2>图 1 · 两个目标国家与区域平均贷款利率</h2><p class="note">区域平均并非两国简单算术平均，且这里没有控制银行信贷结构、贷款期限、各国宏观经济条件。</p><div class="legend"><span><i style="background:#0f7c77"></i>UEMOA</span><span><i style="background:#c0783b"></i>科特迪瓦</span><span><i style="background:#517fb5"></i>塞内加尔</span></div><svg id="country" class="svg" viewBox="0 0 990 380" role="img" aria-label="2020至2025年UEMOA科特迪瓦塞内加尔贷款利率走势图"><text x="495" y="190" text-anchor="middle" fill="#607b82">数据载入中…</text></svg></section>
+<section class="panel"><h2>图 2 · 区域非金融企业与不同用途贷款利率</h2><p class="note">非金融企业是借款主体分类；设备贷款、出口贷款、营运资金贷款是贷款用途分类，统计口径存在交叉，不应将几个利率直接相加。</p><div class="legend"><span><i style="background:#0f7c77"></i>非金融企业</span><span><i style="background:#c0783b"></i>设备贷款</span><span><i style="background:#517fb5"></i>出口贷款</span><span><i style="background:#866bb1"></i>营运资金</span></div><svg id="sector" class="svg" viewBox="0 0 990 380" role="img" aria-label="UEMOA非金融企业及不同用途贷款利率走势图"><text x="495" y="190" text-anchor="middle" fill="#607b82">数据载入中…</text></svg></section>
+<section class="panel"><h2>表 1 · 2024—2025 年贷款利率变化</h2><p class="note">金额单位：年化利率 %；变动：bp（基点）。所有变化由官方年度数据自动计算。</p><div class="tablewrap"><table><thead><tr><th>指标</th><th>2024 (%)</th><th>2025 (%)</th><th>变动 (bp)</th></tr></thead><tbody id="statsBody"><tr><td colspan="4">载入中…</td></tr></tbody></table></div><a class="download" href="../data/official/bceao_annual_lending_2020_2025.csv" download>下载年度 CSV（附官方来源）</a><a class="download" href="../data/processed/annual_lending_descriptives_v1.json" download>下载自动计算摘要 JSON</a></section>
+<section class="panel"><h2>论文研究笔记 · 第一轮描述性证据</h2><p class="note"><b>观察一：</b>在 2025 年，区域平均贷款利率下降，但塞内加尔和区域非金融企业贷款利率上升。<b>观察二：</b>设备融资成本基本持平，而出口贷款成本上升。<b>方法约束：</b>只有 6 个年度点，这些对照不可被解释为统计显著的货币政策传导或 2SLS 因果结论。</p><p class="note"><b>下一步：</b>从不同时期的 BCEAO 季度公报逐期扩充真实银行贷款利率序列，建立贷款类别、融资成本、通胀和银行间资金成本的共同样本，再讨论滞后与回归模型。</p><p class="note">官方唯一来源：<a href="https://ns2.bceao.int/sites/default/files/2026-09/Rapport%20annuel%20Conditions%20de%20banque%20-%202025.pdf" target="_blank" rel="noopener">BCEAO，Rapport annuel sur les conditions de banque dans l'UEMOA – 2025</a>；印刷第 23、34、46、62 页。<a href="../docs/annual_bank_lending_sources_v1.md">数据口径及复核记录</a>。</p><p id="status" class="note" role="status"></p></section>
+<footer>AeroRisk-FR Research · public BCEAO data transcription with source citations · 2026-10-15</footer></main>
+<script>
+'use strict';
+const COLS={uemoa_all_loans_pct:'UEMOA 贷款总平均',cote_divoire_all_loans_pct:'科特迪瓦贷款总平均',senegal_all_loans_pct:'塞内加尔贷款总平均',uemoa_nonfinancial_corporate_pct:'UEMOA 非金融企业贷款',uemoa_export_loans_pct:'UEMOA 出口贷款',uemoa_equipment_loans_pct:'UEMOA 设备贷款',uemoa_working_capital_loans_pct:'UEMOA 营运资金贷款'};
+const shade=(v)=>v>0?'pos':v<0?'neg':'';
+function draw(id,rows,keys,colors){
+ const node=document.getElementById(id),W=990,H=380,L=60,R=25,T=22,B=49,ww=W-L-R,hh=H-T-B;
+ const numbers=rows.flatMap(r=>keys.map(k=>Number(r[k]))),min=Math.floor(Math.min(...numbers)-.35),max=Math.ceil(Math.max(...numbers)+.35);
+ const x=i=>L+(ww*i/(rows.length-1)),y=v=>T+hh*(max-v)/(max-min);
+ let s='';
+ for(let n=min;n<=max;n++){s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(n)+'" y2="'+y(n)+'" stroke="#e8eff2"/><text x="'+(L-9)+'" y="'+(y(n)+4)+'" fill="#627b85" text-anchor="end" font-size="12">'+n+'</text>'}
+ rows.forEach((r,i)=>s+='<text x="'+x(i)+'" y="'+(H-24)+'" text-anchor="middle" fill="#627b85" font-size="13">'+r.year+'</text>');
+ keys.forEach((key,z)=>{s+='<polyline fill="none" stroke-width="3" stroke="'+colors[z]+'" points="'+rows.map((r,i)=>x(i)+','+y(Number(r[key]))).join(' ')+'"/>';rows.forEach((r,i)=>s+='<circle cx="'+x(i)+'" cy="'+y(Number(r[key]))+'" r="4" fill="'+colors[z]+'"/>')});
+ node.innerHTML=s+'<text x="'+(L+5)+'" y="13" fill="#607781" font-size="12">Annual bank lending rate (%)</text>';
+}
+(async()=>{try{
+ const [r,j]=await Promise.all([fetch('../data/official/bceao_annual_lending_2020_2025.csv'),fetch('../data/processed/annual_lending_descriptives_v1.json')]);
+ if(!r.ok||!j.ok)throw Error('官方 CSV 或统计摘要暂不可读取');
+ const src=(await r.text()).trim().split(/\r?\n/),headers=src.shift().split(','),rows=src.map(line=>Object.fromEntries(line.split(',').map((v,i)=>[headers[i],v]))),result=await j.json();
+ if(rows.length!==6||rows[0].year!=='2020'||rows[5].year!=='2025')throw Error('数据年份或记录数不符合研究设计');
+ draw('country',rows,['uemoa_all_loans_pct','cote_divoire_all_loans_pct','senegal_all_loans_pct'],['#0f7c77','#c0783b','#517fb5']);
+ draw('sector',rows,['uemoa_nonfinancial_corporate_pct','uemoa_equipment_loans_pct','uemoa_export_loans_pct','uemoa_working_capital_loans_pct'],['#0f7c77','#c0783b','#517fb5','#866bb1']);
+ document.getElementById('statsBody').innerHTML=Object.entries(result.statistics).map(([k,v])=>'<tr><td>'+COLS[k]+'</td><td>'+v.value_2024_pct.toFixed(2)+'</td><td>'+v.value_2025_pct.toFixed(2)+'</td><td class="'+shade(v.change_2024_to_2025_bp)+'">'+(v.change_2024_to_2025_bp>0?'+':'')+v.change_2024_to_2025_bp+'</td></tr>').join('');
+ document.getElementById('status').textContent='数据核对：成功载入 6 个年度、7 组官方利率序列；统计表由独立 Python 程序重算。';
+}catch(e){document.getElementById('status').textContent='载入失败：'+e.message}}
+})();
+</script></body></html>
