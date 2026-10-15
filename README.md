@@ -1,12 +1,13 @@
 # AeroRisk-FR · 法语区航空租赁风险研究
 
-**2026-10-15 · Open research prototype v0.2 (宏观数据模块 + 风险模拟器)**
+**2026-10-15 · Open research prototype v0.3 (央行政策 + 资金成本传导 + 风险模拟器)**
 
 这个公开仓库用于完成本科创新训练项目《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》。
 
 ## 在线演示
 
 - **[AeroRisk-FR 风险模拟器](https://leamya123.github.io/aerorisk-fr-research/prototype/)** — 假设情景的预期现金流、月租金与法律延迟压力测试，**不等于市场报价**
+- **[真实融资传导观察](https://leamya123.github.io/aerorisk-fr-research/transmission/)** — 官方 BCEAO 一周流动性招标利率与 UEMOA / 塞内加尔 / 科特迪瓦银行贷款利率（分别展示月度、季度数据）
 - **[真实宏观利率观察](https://leamya123.github.io/aerorisk-fr-research/macro/)** — ECB 与 BCEAO 官方利率生效日期整理、月末对比图和可下载的可复现 CSV
 
 ## 研究状态（仅描述已完成成果）
@@ -29,6 +30,9 @@
 - `data/official/bceao_policy_events.csv`：BCEAO 日期生效数据与官网链接
 - `data/official/README.md`：数据转录来源、口径、待核查项
 - `data/processed/central_bank_policy_monthly_v1.csv`：加工后的月末值
+- `data/official/bceao_weekly_auction_monthly.csv`：BCEAO 一周流动性招标利率，2024-07 至 2026-03
+- `data/official/bceao_bank_lending_quarterly.csv`：UEMOA 银行贷款利率（及塞内加尔/科特迪瓦），2024Q4 至 2026Q1
+- `src/build_financing_summary.py`：可复算 BCEAO 融资指标描述统计
 - `src/build_macro_panel.py`：只用 Python 标准库重建 81 个月数据
 - `src/risk_model.py`：飞机租赁模拟模型
 - `tests/`：模型与官方利率数据自动校验
@@ -43,6 +47,7 @@
 
 ```bash
 python src/build_macro_panel.py
+python src/build_financing_summary.py
 python -m unittest discover -s tests -v
 ```
 
