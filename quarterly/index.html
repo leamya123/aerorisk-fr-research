@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AeroRisk-FR · BCEAO 26季度实证数据库</title>
+<style>
+:root{--ink:#193746;--muted:#647c86;--border:#dce9ee;--teal:#0d817a;--orange:#cc8c50;--blue:#537eb2;--bg:#f4f8fa}
+*{box-sizing:border-box}body{margin:0;font:14px/1.55 system-ui,-apple-system,'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:30px max(20px,calc((100% - 1120px)/2));background:linear-gradient(115deg,#0b374e,#11827c);color:white}
+header a{color:#c7eee8;text-decoration:none}header small{font-size:12px;color:#b2e2dc}h1{font-size:29px;margin:12px 0 6px}header p{max-width:930px;color:#d7eced;margin:8px 0 0}
+main{max-width:1160px;margin:auto;padding:22px 18px 40px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:21px;margin:16px 0;box-shadow:0 7px 24px #193c4a07}
+.note{font-size:12px;color:var(--muted)}h2{font-size:18px;margin:0 0 6px}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.kpi{background:#eef8f5;padding:19px;border-radius:11px;border:1px solid #daefea}.kpi span{font-size:12px;color:#58737d}.kpi strong{display:block;font-size:26px;color:#12655f;margin:5px 0}.kpi small{color:#71838d}
+.warning{background:#fff7e9;border:1px solid #ead7b5;color:#745527;padding:13px 16px;border-radius:11px;margin-bottom:16px;font-size:13px}
+.warning a{color:#835c25}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.actions a{border:1px solid #cee2e5;border-radius:8px;padding:8px 11px;color:var(--teal);text-decoration:none;font-size:12px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0;color:#526e7b;font-size:12px}
+.legend i{display:inline-block;width:18px;height:4px;border-radius:4px;margin-right:5px;vertical-align:middle}
+.chart{display:block;width:100%;height:auto;background:white;border:1px solid #e9eff1;border-radius:10px}
+.smalltable{overflow:auto;max-height:430px;border:1px solid #e5edef;border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:750px;font-variant-numeric:tabular-nums;font-size:12px}
+th,td{padding:9px 11px;text-align:right;border-bottom:1px solid #e8eef1;white-space:nowrap}
+td:first-child,th:first-child{text-align:left}th{position:sticky;top:0;background:#edf5f6;color:#415f69}
+tr.flag{background:#fff6e7}.status{font-size:12px;color:#2a7b6d;min-height:15px}
+.links{line-height:1.9}.links a{color:#0c7771}
+@media(max-width:740px){h1{font-size:22px}.kpis{grid-template-columns:1fr}.card{padding:16px}}
+</style></head><body>
+<header><a href="../annual/">← 返回年度融资数据实验室</a><h1>真实季度实证数据库 · 2020Q1—2026Q2</h1><p>ECB / BCEAO 政策利率与 UEMOA、塞内加尔、科特迪瓦银行客户贷款利率：26 季连续观测、出版版本追踪、季度变化核验。</p><small>AERORISK-FR RESEARCH · QUARTERLY CREDIT CONDITIONS · PRE-ANALYSIS</small></header>
+<main>
+<div class="warning"><b>数据质量提示：</b>本数据集按不同 BCEAO 官方公报拼接，每行保存所选出版版本，不代表官方发布过同一份“最终统一面板”。特别是 <b>2025Q1 塞内加尔</b>在两个出版版本间存在较大修订，已标记待复核；2026Q2 是暂定值。<a href="../docs/quarterly_lending_panel_audit_v1.md">查看审计记录及原始来源</a>。</div>
+<div class="kpis"><section class="kpi"><span>连续季度</span><strong>26</strong><small>2020Q1—2026Q2 · 无人为插值</small></section><section class="kpi"><span>UEMOA 银行贷款利率峰值</span><strong>7.07%</strong><small>2024Q3 · 选定官方出版版本</small></section><section class="kpi"><span>2026Q2 UEMOA 银行贷款利率</span><strong>6.67%</strong><small>官方初步值，较 2024Q3 低 40bp</small></section></div>
+<section class="card"><h2>图 1 · 区域与两国银行客户贷款利率（季度）</h2><p class="note">全部是新发放银行贷款的期间平均利率；不是飞机租赁利率，也不是某航空公司实际融资成本。黄色标记为有争议的出版修订季度。</p>
+<div class="legend"><span><i style="background:#0d817a"></i>UEMOA</span><span><i style="background:#cc8c50"></i>科特迪瓦</span><span><i style="background:#537eb2"></i>塞内加尔</span><span>◆ 2025Q1 版本差异待复核</span></div>
+<svg id="loanChart" class="chart" viewBox="0 0 1030 405" role="img" aria-label="2020到2026年三个区域季度银行贷款利率趋势"><text x="515" y="202" text-anchor="middle" fill="#748c94">数据载入中…</text></svg></section>
+<section class="card"><h2>图 2 · ECB 与 BCEAO 季末政策利率</h2><p class="note">政策利率取每季度最后一个日历日已经生效的水平，而不是季度均值。货币挂钩机制不等于两央行政策利率必然同步。</p>
+<div class="legend"><span><i style="background:#0d817a"></i>ECB DFR 季末</span><span><i style="background:#cc8c50"></i>BCEAO TMS 季末</span></div>
+<svg id="policyChart" class="chart" viewBox="0 0 1030 405" role="img" aria-label="ECB和BCEAO季度末政策利率对比"><text x="515" y="202" text-anchor="middle" fill="#748c94">数据载入中…</text></svg>
+<p class="note">两类利率分别具有不同的货币政策操作角色。图形只是描述性对比，不说明冲击的因果传导。</p></section>
+<section class="card"><h2>表 1 · 全部季度数据及原始公报</h2><p class="note">百分率：年化 %；Δ 表示季环比的百分点变化。点击单行的 BCEAO 官方公报，核查该季度相应 Table 3.1。</p>
+<div class="actions"><a href="../data/processed/quarterly_policy_lending_panel_v1.csv" download>下载 26 季度完整面板 CSV</a><a href="../data/official/bceao_lending_quarterly_2020q1_2026q2_selected_vintages.csv" download>下载原始来源记录 CSV</a><a href="../docs/quarterly_lending_panel_audit_v1.md">数据版本与修订清单</a></div>
+<div class="smalltable"><table><thead><tr><th>季度</th><th>UEMOA</th><th>科特迪瓦</th><th>塞内加尔</th><th>ECB DFR</th><th>BCEAO TMS</th><th>UEMOA Δ (pp)</th><th>来源版本</th></tr></thead><tbody id="rows"><tr><td colspan="8">读取中…</td></tr></tbody></table></div>
+<p class="status" id="status" role="status"></p></section>
+<section class="card links"><h2>可以支持什么研究，不能支持什么研究？</h2>
+<p><b>可支持：</b>描述性统计、时序对照、带样本量与数据修订说明的探索性滞后关联分析。</p>
+<p><b>暂不支持：</b>宣称 ECB 对航空租金的因果效应；将 ECB 直接视为有效 2SLS 工具变量；由 WJP 司法评分估计飞机司法收回时长；把 UEMOA 总体与其成员国当作互不重叠的独立单位。</p>
+<p>下一步优先研究银行间资金价格、通胀及贷款构成；对 2025Q1 高修订季度进行排除敏感性比较后，再决定回归形式。</p>
+</section>
+</main>
+<script>
+'use strict';
+function parse(text){const [h,...lines]=text.trim().split(/\r?\n/),fields=h.split(',');return lines.map(line=>Object.fromEntries(line.split(',').map((x,i)=>[fields[i],x])))}
+function draw(id,rows,series,colors,options={}){
+ const svg=document.getElementById(id),W=1030,H=405,L=60,R=27,T=24,B=56,w=W-L-R,h=H-T-B;
+ const nums=rows.flatMap(r=>series.map(k=>Number(r[k])));
+ const lo=options.min??Math.floor(Math.min(...nums)-.4),hi=options.max??Math.ceil(Math.max(...nums)+.4);
+ const x=i=>L+(w*i/(rows.length-1)),y=n=>T+(hi-n)*h/(hi-lo);
+ let shapes='';
+ for(let tick=lo;tick<=hi;tick++){shapes+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(tick)+'" y2="'+y(tick)+'" stroke="#e6eff1"/><text x="'+(L-10)+'" y="'+(y(tick)+4)+'" text-anchor="end" font-size="12" fill="#637d87">'+tick+'</text>'}
+ rows.forEach((r,i)=>{if(i%4===0||i===rows.length-1)shapes+='<text x="'+x(i)+'" y="'+(H-27)+'" text-anchor="middle" font-size="12" fill="#637d87">'+r.quarter.slice(0,4)+(i===rows.length-1?'Q2':'')+'</text>'});
+ series.forEach((key,z)=>{
+   shapes+='<polyline fill="none" stroke="'+colors[z]+'" stroke-width="2.8" points="'+rows.map((r,i)=>x(i)+','+y(Number(r[key]))).join(' ')+'"/>';
+   rows.forEach((r,i)=>{const flagged=id==='loanChart'&&r.quarter==='2025-Q1';shapes+='<circle cx="'+x(i)+'" cy="'+y(Number(r[key]))+'" r="'+(flagged?5:2.6)+'" stroke="'+(flagged?'#d19c37':'none')+'" stroke-width="2" fill="'+colors[z]+'"><title>'+r.quarter+' · '+key+' · '+r[key]+'%'+(flagged?' · cross-vintage discrepancy':'')+'</title></circle>'});
+ });
+ svg.innerHTML=shapes+'<text x="'+(L+5)+'" y="15" fill="#5c7580" font-size="12">Annualized rate (%)</text>';
+}
+(async()=>{try{
+ const res=await fetch('../data/processed/quarterly_policy_lending_panel_v1.csv');
+ if(!res.ok)throw Error('CSV HTTP '+res.status);
+ const rows=parse(await res.text());
+ if(rows.length!==26||rows[0].quarter!=='2020-Q1'||rows.at(-1).quarter!=='2026-Q2')throw Error('季度数据完整性错误');
+ draw('loanChart',rows,['uemoa_lending_pct','cote_divoire_lending_pct','senegal_lending_pct'],['#0d817a','#cc8c50','#537eb2'],{min:5,max:8});
+ draw('policyChart',rows,['ecb_dfr_quarter_end_pct','bceao_tms_quarter_end_pct'],['#0d817a','#cc8c50']);
+ document.getElementById('rows').innerHTML=rows.map(r=>{
+ const f=r.quality_flag!=='';const tag=f?' title="'+r.quality_flag.replace(/[^a-z0-9_]/gi,'')+'"':'';
+ return '<tr class="'+(f?'flag':'')+'"'+tag+'><td>'+r.quarter+(f?' ⚠':'')+'</td><td>'+r.uemoa_lending_pct+'</td><td>'+r.cote_divoire_lending_pct+'</td><td>'+r.senegal_lending_pct+'</td><td>'+r.ecb_dfr_quarter_end_pct+'</td><td>'+r.bceao_tms_quarter_end_pct+'</td><td>'+r.delta_uemoa_lending_pp+'</td><td><a href="'+r.source_url+'" target="_blank" rel="noopener noreferrer">'+r.source_vintage+'</a></td></tr>';
+ }).join('');
+ document.getElementById('status').textContent='成功读取 26 个连续季度、三条贷款利率及两条季末政策利率序列。';
+}catch(error){document.getElementById('status').textContent='加载失败：'+error.message;document.getElementById('rows').innerHTML='<tr><td colspan="8">数据暂不可用，请稍后重试</td></tr>';}}
+)();
+</script></body></html>
