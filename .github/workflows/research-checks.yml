@@ -20,5 +20,9 @@ jobs:
         run: python src/build_macro_panel.py
       - name: Verify generated data is committed consistently
         run: git diff --exit-code -- data/processed/central_bank_policy_monthly_v1.csv
+      - name: Rebuild financing descriptive statistics
+        run: python src/build_financing_summary.py
+      - name: Verify BCEAO financing statistics are committed consistently
+        run: git diff --exit-code -- data/processed/financing_descriptives_v1.json
       - name: Unit and data integrity tests
         run: python -m unittest discover -s tests -v
