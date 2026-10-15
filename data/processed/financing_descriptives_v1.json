@@ -5,7 +5,7 @@
   "auction_2026_03_rate_pct": 3.577,
   "auction_change_2024_07_to_2026_03_bp": -192.3,
   "policy_bceao_2024_07_pct": 3.5,
-  "policy_bceao_2026_03_pct": 3,
+  "policy_bceao_2026_03_pct": 3.0,
   "policy_change_bp": -50,
   "auction_minus_policy_spread_2024_07_bp": 200,
   "auction_minus_policy_spread_2026_03_bp": 57.7,
