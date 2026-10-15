@@ -50,5 +50,5 @@ function draw(id,rows,keys,colors){
  document.getElementById('statsBody').innerHTML=Object.entries(result.statistics).map(([k,v])=>'<tr><td>'+COLS[k]+'</td><td>'+v.value_2024_pct.toFixed(2)+'</td><td>'+v.value_2025_pct.toFixed(2)+'</td><td class="'+shade(v.change_2024_to_2025_bp)+'">'+(v.change_2024_to_2025_bp>0?'+':'')+v.change_2024_to_2025_bp+'</td></tr>').join('');
  document.getElementById('status').textContent='数据核对：成功载入 6 个年度、7 组官方利率序列；统计表由独立 Python 程序重算。';
 }catch(e){document.getElementById('status').textContent='载入失败：'+e.message}}
-})();
+)();
 </script></body></html>
