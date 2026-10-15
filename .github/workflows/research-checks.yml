@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile all frontend JavaScript and smoke-test dashboard
+        run: node scripts/validate_dashboard.js
       - name: Rebuild policy panel
         run: python src/build_macro_panel.py
       - name: Verify generated data is committed consistently
