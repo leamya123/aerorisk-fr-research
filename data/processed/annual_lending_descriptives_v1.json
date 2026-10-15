@@ -1,0 +1,51 @@
+{
+  "source_table": "BCEAO annual banking conditions report 2025; appendix 2020-2025",
+  "start_year": 2020,
+  "end_year": 2025,
+  "n_annual_observations": 6,
+  "statistics": {
+    "uemoa_all_loans_pct": {
+      "description": "UEMOA average: all lending",
+      "value_2024_pct": 6.76,
+      "value_2025_pct": 6.69,
+      "change_2024_to_2025_bp": -7
+    },
+    "cote_divoire_all_loans_pct": {
+      "description": "Cote d'Ivoire average: all lending",
+      "value_2024_pct": 6.45,
+      "value_2025_pct": 6.26,
+      "change_2024_to_2025_bp": -19
+    },
+    "senegal_all_loans_pct": {
+      "description": "Senegal average: all lending",
+      "value_2024_pct": 5.93,
+      "value_2025_pct": 5.98,
+      "change_2024_to_2025_bp": 5
+    },
+    "uemoa_nonfinancial_corporate_pct": {
+      "description": "UEMOA: nonfinancial corporations",
+      "value_2024_pct": 6.34,
+      "value_2025_pct": 6.45,
+      "change_2024_to_2025_bp": 11
+    },
+    "uemoa_export_loans_pct": {
+      "description": "UEMOA: export lending",
+      "value_2024_pct": 6.51,
+      "value_2025_pct": 6.79,
+      "change_2024_to_2025_bp": 28
+    },
+    "uemoa_equipment_loans_pct": {
+      "description": "UEMOA: equipment lending",
+      "value_2024_pct": 7.04,
+      "value_2025_pct": 7.06,
+      "change_2024_to_2025_bp": 2
+    },
+    "uemoa_working_capital_loans_pct": {
+      "description": "UEMOA: working-capital lending",
+      "value_2024_pct": 6.38,
+      "value_2025_pct": 6.44,
+      "change_2024_to_2025_bp": 6
+    }
+  },
+  "interpretation_guardrail": "Annual descriptive group averages with varying composition. Do not use as asset-level lease price evidence or causal estimates."
+}
