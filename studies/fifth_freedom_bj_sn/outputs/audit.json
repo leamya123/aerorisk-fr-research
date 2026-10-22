@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "sources": 25,
+    "events": 11,
+    "routes": 18,
+    "literature": 12,
+    "articles": 9,
+    "chains": 3
+  },
+  "input_sha256": {
+    "official_source_registry.csv": "a11597769d358bd83529e4c53705ddd1bd2426020d58fa3356420fadb7c185dd",
+    "policy_events.csv": "97d64619e1b1f423490c1f26f0a28730df787a9ca1fdf8d65eea45e3c13fbb0d",
+    "route_evidence_audit.csv": "df7a74038b96a0ec1981fd6b94360c955d60864f9f2710fc597bbe0d2e82d36b",
+    "literature_gap_matrix.csv": "4fe26a00e3e7afa040f98c55c86792a263587ce2d9585d6f4d864f0713c97d3d",
+    "legal_article_matrix.csv": "dd003f3e22f38fc68f8c171e8abe2479db7cea07f534fde65cda435c3c2a4339",
+    "evidence_chain_and_gaps.csv": "ac018e614ec2af660407dc6fc8cf34f26797f65d6d0d536f41e4be58ff9e4494"
+  },
+  "checks": "IDs, references, URL syntax, status vocabulary",
+  "not_checked": "URL availability, current legal validity, independent translation, novelty, real route operation"
+}

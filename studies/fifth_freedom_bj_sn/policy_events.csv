@@ -1,0 +1,12 @@
+country,event_id,event_date,date_anchor,event_type,legal_commitment,domestic_measure,authorization_evidence,operational_evidence,source_id,evidence_level,coding_notes,missing_information
+BJ;SN,E01,2022-03-17,AU网页发布日期,commitment_list,DIRECT,NA,NA,NA,AU01,DIRECT_DOCUMENT,仅直接确认被列入清单,各国签署原件及日期
+BJ,E02,,2022 retrospective,BASA_alignment_claim,REPORTED,REPORTED,UNKNOWN,UNKNOWN,BJ01,OFFICIAL_ASSERTION,官方称全部对齐，不独立确认,逐份协定与有效条款
+BJ,E03,2024-07-15,law instrument date,civil_aviation_code,NA,DIRECT,UNKNOWN,UNKNOWN,BJ03,DIRECT_DOCUMENT,已补证公布稿第224–227条及第349条；具有直接国内准入规则证据，不代表第五航权个案获批,法律生效、公报及后续修订/配套决定/第五航权个案授权
+BJ,E04,2026-07-14,event date in notice,BASA_initialling_MOU,REPORTED,NA,UNKNOWN,UNKNOWN,BJ04,OFFICIAL_ASSERTION,临时适用为官方报告，保留法律效果区别,第五航权条款/指定航司/具体许可
+SN,E05,2015-05-04,law instrument date,foreign_carrier_authorization_rule,NA,DIRECT,UNKNOWN,UNKNOWN,SN01,DIRECT_DOCUMENT,历史法律背景，不算2022–26新事件,最新修订/个案批准
+SN,E06,,interview mentions May 2024,national_committee_plan,NA,PLANNED,UNKNOWN,UNKNOWN,SN02,OFFICIAL_ASSERTION,不编码为尚未实施,成立法令/履职记录/后续日期
+SN,E07,,interview mentions 2024,BASA_alignment_plan,PLANNED,NA,UNKNOWN,UNKNOWN,SN02,OFFICIAL_ASSERTION,计划不得当作全体航协不合规,签署与生效协定条款
+BJ,E08,,2023 progress report,reported_fifth_freedom_routes,NA,NA,UNKNOWN,REPORTED,AF01,OFFICIAL_ASSERTION,Mauritanian Airlines / Afrijet相关航程见路线表,许可文号/航司注册证/实际载运日期
+SN,E09,,2023 progress report,reported_fifth_freedom_routes,NA,NA,UNKNOWN,REPORTED,AF01,OFFICIAL_ASSERTION,Kenya Airways Nairobi–Accra–Dakar；本国航司海外权利另列,许可文号/本地售票与执行记录
+BJ,E10,,undated organizational page,foreign_carrier_procedure_responsibility,NA,DIRECT,UNKNOWN,NA,BJ02,DIRECT_DOCUMENT,直接确认职责声明，不确认程序有效运行；DIRECT仅指机构网站直接载有该职责，不表示办理已发生,程序文件及实际办理案例
+SN,E11,2022-12-11,carrier retrospective annual report,carrier_reported_route_launch,NA,NA,UNKNOWN,REPORTED,KQ01,CARRIER_PRIMARY_REPORT,Accra–Dakar每周2班，结合AF01的Nairobi–Accra–Dakar；不把预定频次当实际全年班次,个案许可、本地商业载运独立证据、逐班执行及持续期
