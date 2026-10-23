@@ -27,7 +27,7 @@
 
 ## 原有六个演示入口（保留）
 
-[原始首页](index.html) · [租赁情景原型](prototype/index.html) · [宏观政策利率](macro/index.html) · [融资传导](transmission/index.html) · [年度信贷](annual/index.html) · [季度面板](quarterly/index.html)。原型为历史辅助模拟，不是观测金融结果。
+[项目首页（原型入口保留）](index.html) · [租赁情景原型](prototype/index.html) · [宏观政策利率](macro/index.html) · [融资传导](transmission/index.html) · [年度信贷](annual/index.html) · [季度面板](quarterly/index.html)。原型为历史辅助模拟，不是观测金融结果。
 
 ## v2历史阶段记录
 

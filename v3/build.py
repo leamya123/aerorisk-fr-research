@@ -6,6 +6,7 @@ import csv
 import html
 import hashlib
 import json
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -90,7 +91,11 @@ def build(output_dir=SITE,template_dir=SITE,source=SOURCE):
     import re
     offline=re.sub(r'<img class="finance-chart"[^>]*>', '<div class="finance-chart">'+chart+'</div>', offline)
     offline=offline.replace('<script src="app.js"></script>','<script>\n'+app+'\n</script>')
-    offline=offline.replace('href="data/evidence.json" download','href="#evidence"').replace('href="offline.html" download','href="#top"').replace('href="README.md"','href="#method"')
+    # Offline controls must perform the action their label promises.
+    offline=offline.replace('href="data/evidence.json" download',
+                            'href="data:application/json;charset=utf-8,'+quote(compact,safe='')+'" download="evidence.json"')
+    offline=offline.replace('href="offline.html" download>下载离线单页', 'href="#top">返回页首')
+    offline=offline.replace('href="README.md">查看操作说明', 'href="#offline-help">查看离线说明')
     _write(output_dir/'offline.html',offline)
     artifacts={name:_sha((output_dir/name).read_bytes()) for name in GENERATED if name!='build-audit.json'}
     audit={'source':str(source.relative_to(ROOT)).replace('\\','/'),'source_sha256':_sha(source.read_bytes()),'financial_source':str(FINANCE_SOURCE.relative_to(ROOT)),'financial_source_sha256':_sha(FINANCE_SOURCE.read_bytes()),'artifacts':artifacts,'guardrail':'Kenya Airways specific permit and local paid carriage remain UNKNOWN'}

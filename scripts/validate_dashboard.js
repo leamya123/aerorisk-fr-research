@@ -16,7 +16,7 @@ const vm = require('node:vm');
 const ROOT = path.resolve(__dirname, '..');
 const PAGES = ['index.html', 'prototype/index.html', 'macro/index.html',
                'transmission/index.html', 'annual/index.html', 'quarterly/index.html',
-               'v3/index.html', 'v3/offline.html'];
+               'v3/index.html', 'v3/offline.html', 'docs/midterm_20261028/index.html'];
 const EXTERNAL_SCRIPTS = ['v3/data/evidence.js', 'v3/data/finance.js', 'v3/app.js'];
 
 function getScripts(relativePath) {

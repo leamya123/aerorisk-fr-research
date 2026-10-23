@@ -55,5 +55,24 @@ class V3PresentationTests(unittest.TestCase):
         self.assertIn('Air Côte d’Ivoire revenue and net income',page)
         self.assertNotIn('src="data/finance.js"',page)
         self.assertNotIn('src="data/airline-financials.svg"',page)
+        from html.parser import HTMLParser
+        from urllib.parse import unquote
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__(); self.links=[]
+            def handle_starttag(self, tag, attrs):
+                if tag=='a': self.links.append(dict(attrs))
+        links=Links(); links.feed(page)
+        downloads=[a for a in links.links if a.get('download')=='evidence.json']
+        self.assertEqual(len(downloads),1)
+        href=downloads[0]['href']
+        self.assertTrue(href.startswith('data:application/json;charset=utf-8,'))
+        self.assertEqual(json.loads(unquote(href.split(',',1)[1])),json.loads(SOURCE.read_text(encoding='utf-8-sig')))
+        self.assertIn('href="#top">返回页首',page)
+        self.assertIn('href="#offline-help">查看离线说明',page)
+        self.assertIn('id="offline-help"',page)
+        self.assertNotIn('href="#top">下载离线单页',page)
+        self.assertNotIn('href="#method">查看操作说明',page)
+
 
 if __name__=='__main__':unittest.main()

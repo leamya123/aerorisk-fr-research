@@ -70,3 +70,9 @@ python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 不更改 main 或现有 Pages 设置。若确需在线分支预览，优先独立的临时预览部署，需明确授权与可用部署环境；若要更改现有 Pages 发布源或合并至 main，应先征得许可。任何 PR 保持 draft，不合并。当前未声称已完成公网部署。
 
 实际验证、限制与结果见 [2026-10-24 验证记录](../docs/verification_20261024_v3.md)；六幅截图在 [screenshots/](screenshots/)。
+
+## PR #1 合并前修复（2026-10-24）
+
+离线版三个操作为“下载证据 JSON”（实际导出内嵌法律快照）、“返回页首”和“查看离线说明”（均为对应页内跳转）。原始财务表独立内嵌，不混入法律 schema。
+
+根首页现为完整课题导航；原首页所跳转的租赁原型仍在 `prototype/`，五个独立金融／情景演示目录保持不变。当前 PR 保持 Draft，等待研究者最终确认；[合并前检查与发布方案](../docs/premerge_review_pr1_20261024.md)记录远端 CI、资产保留、公开资料审查和部署边界。
