@@ -34,3 +34,5 @@
 `v3/screenshots/` 含开场、法律、证据、KQ、金融、研究递进六幅实际 Chromium 截图，供答辩排版使用，不作为新研究证据。
 
 下载本分支完整ZIP并解压，双击 `v3/offline.html` 展示新法律和金融内容。仅此单文件即可展示内嵌图表；官方URL需网络。原有六个演示的相对链接需完整目录，并在根目录运行 `python -m http.server 8000` 后使用浏览器打开相应路径。`v3/README.md` 列出每个截图锚点及完整复算命令。
+
+发布后截图字节检查发现既有 `.gitattributes` 的 `v3/** text eol=lf` 会改写 PNG 字节。已增加 `v3/screenshots/*.png binary` 覆盖规则并重新保存全部截图；逐文件验证 Git 对象与实际 PNG 字节、PNG 签名完全一致。未修改原有金融资产规则或内容。
