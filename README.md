@@ -11,7 +11,11 @@
 
 **原立项／历史正式题名**：《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》。题名变更仍待学校批准；不得写成已完成正式更名。
 
-答辩入口：[v3 全项目概览](v3/README.md) · [v3 展示页](v3/index.html) · [答辩讲稿](docs/midterm_20261028.md) · [法律子研究](studies/fifth_freedom_bj_sn/README.md)。分支页面不等于已部署的 GitHub Pages；离线可直接打开 `v3/offline.html`。
+答辩入口：**[完整答辩文字包（GitHub直接阅读）](docs/midterm_20261028/content.md)** · [完整答辩网页（下载后打开）](docs/midterm_20261028/index.html) · [v3 全项目概览](v3/README.md) · [v3 展示页](v3/index.html) · [五分钟演示提纲](docs/midterm_20261028.md) · [法律子研究](studies/fifth_freedom_bj_sn/README.md)。
+
+完整答辩包包含研究历程、中期进展报告、12页PPT逐页内容与备注、5—7分钟讲稿、22个问答、研究路线图、任务表及来源索引。`content.md` 可在GitHub阅读和协作修改，`index.html` 为可离线打开、复制与打印的网页版本；两者修改时需同步。本包是PPT制作文字资料，尚非正式排版的幻灯片。
+
+分支中的HTML文件不等于已部署的 GitHub Pages。完整项目交互展示打开 `v3/offline.html`，完整答辩文字资料打开 `docs/midterm_20261028/index.html`。正文说明的是融资环境与潜在约束，尚未直接测量航司融资约束或识别制度与金融的联合因果效应。
 
 ## 研究递进：已完成与待验证
 
@@ -44,11 +48,11 @@
 - [旧版论文结构](paper/manuscript_outline_v1.md) — 2026-10-16 前的资产定价研究思路，**已被新 Y 方案取代**；历史范围见 v2；当前范围见本文开头
 - [下一步宏观控制变量采集规程](docs/ECON_next_sprint_2026_10.md) — 银行间利率、通胀、GDP 与信用流动性来源计划（尚未收集完整样本）
 
-这个公开仓库用于完成本科创新训练项目《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》。
+这个公开仓库保存航空大创的金融、法律及综合研究成果和原立项历史材料；当前研究方向见本文开头，正式更名仍依学校审批。
 
 ## 在线演示
 
-- **[v3 · 贝宁—塞内加尔航空准入研究展示](https://leamya123.github.io/aerorisk-fr-research/v3/)** — 法律条文对照、证据审计与 Kenya Airways 第五航权候选案例；具体许可未取得时明确显示 `UNKNOWN`
+- **[v3 · 完整项目展示源文件](v3/index.html)** — 法律条文、证据审计、Kenya Airways候选案例、金融数据与企业财务图；本分支公网部署状态未确认，建议使用离线版。具体许可未取得时明确显示 `UNKNOWN`
 - **[AeroRisk-FR 风险模拟器](https://leamya123.github.io/aerorisk-fr-research/prototype/)** — 假设情景的预期现金流、月租金与法律延迟压力测试，**不等于市场报价**
 - **[2020Q1—2026Q2 连续季度实证数据库](https://leamya123.github.io/aerorisk-fr-research/quarterly/)** — UEMOA/塞内加尔/科特迪瓦 26 季银行贷款成本，附所选公报版本、季末 ECB/BCEAO 及第一差分
 - **[2020–2025 年度信贷数据](https://leamya123.github.io/aerorisk-fr-research/annual/)** — 6 年 × 7 组 BCEAO 官方银行信贷成本系列（UEMOA、科特迪瓦、塞内加尔、贷款用途）
