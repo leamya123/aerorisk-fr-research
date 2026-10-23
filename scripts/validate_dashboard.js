@@ -17,7 +17,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PAGES = ['index.html', 'prototype/index.html', 'macro/index.html',
                'transmission/index.html', 'annual/index.html', 'quarterly/index.html',
                'v3/index.html', 'v3/offline.html'];
-const EXTERNAL_SCRIPTS = ['v3/data/evidence.js', 'v3/app.js'];
+const EXTERNAL_SCRIPTS = ['v3/data/evidence.js', 'v3/data/finance.js', 'v3/app.js'];
 
 function getScripts(relativePath) {
   const html = fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
@@ -101,6 +101,18 @@ async function main() {
     throw new Error('Quarterly panel not loaded: '+quarterNodes.status?.textContent);
   }
   console.log('Quarterly dashboard smoke OK: two SVG charts and 26-quarter data table.');
+  // Execute both the online assets and the generated self-contained page.
+  for (const mode of ['online', 'offline']) {
+    const nodes={};
+    const document={getElementById(id) {return nodes[id]??(nodes[id]={innerHTML:'',textContent:''});},querySelectorAll() {return [];}};
+    const context=vm.createContext({window:{},document,console});
+    const scripts=mode==='offline'?getScripts('v3/offline.html'):EXTERNAL_SCRIPTS.map(p=>fs.readFileSync(path.join(ROOT,p),'utf8'));
+    for (const script of scripts) vm.runInContext(script,context,{timeout:3000});
+    if (!nodes.legalGrid.innerHTML.includes('ART.') || !nodes.caseFacts.innerHTML.includes('未取得具体文件')) throw new Error('v3 legal/case rendering failed: '+mode);
+    if (!nodes.financialRows.innerHTML.includes('128.94') || !nodes.financialRows.innerHTML.includes('-26.80') || (nodes.financialRows.innerHTML.match(/<tr>/g)||[]).length!==5) throw new Error('v3 financial rendering failed: '+mode);
+    if (context.window.AERORISK_EVIDENCE.data.chains.find(r=>r.chain_id==='CH01').specific_permit!=='UNKNOWN') throw new Error('v3 UNKNOWN changed');
+    console.log('v3 '+mode+' smoke OK: legal cards, KQ unknown and five financial rows.');
+  }
   console.log('Validated '+total+' inline JavaScript blocks across '+PAGES.length+' HTML pages.');
 }
 main().catch((error) => {console.error(error);process.exitCode=1;});

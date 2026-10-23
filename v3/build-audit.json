@@ -1,10 +1,14 @@
 {
   "source": "studies/fifth_freedom_bj_sn/outputs/evidence.json",
   "source_sha256": "3a1cd47d43628efe959ee9898d605cabc4b5d0be33b44282a7447f135fc3a9f8",
+  "financial_source": "data/official/airline_financials_candidate_v1.csv",
+  "financial_source_sha256": "87375f09866bd83be2aefd173c721a784e5f687d9a029785c94f75f1f5493d93",
   "artifacts": {
     "data/evidence.json": "3a1cd47d43628efe959ee9898d605cabc4b5d0be33b44282a7447f135fc3a9f8",
     "data/evidence.js": "6c82453a68d837b572a6a94d2e95d2d3383691be74631d7ffd6fdea7a207d58e",
-    "offline.html": "450ed77a64dfbfbf6fada6818bb08d43ad6af65273a8df71e6100fc784c15e7b"
+    "data/finance.js": "a5983ddd7828a853ee8f31e4fcd7c77f3b0c20379dda7747a57c6d2f1e3cf08e",
+    "data/airline-financials.svg": "4e69ac8e233f091afb23bbbc6ea240acaa32a2f079fdec50346b0127d08d5458",
+    "offline.html": "9c19fe90e3451c185b8836fdffe55dbb26aa5bf5e246a577ebdecbe0a27840e7"
   },
   "guardrail": "Kenya Airways specific permit and local paid carriage remain UNKNOWN"
 }

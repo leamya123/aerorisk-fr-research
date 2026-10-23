@@ -1,10 +1,28 @@
-# AeroRisk-FR v3 展示页
+# 云程有数：西非法语区航空业的制度开放与金融约束研究
+
+中期答辩：2026-10-28。当前项目范围包含三个模块：
+
+1. **制度开放**：贝宁—塞内加尔准入制度、一般规则与个案授权的区别、KQ 候选案例；保留来源与 UNKNOWN。
+2. **金融约束**：ECB/BCEAO 利率与银行贷款条件、Air Côte d'Ivoire 2019–2023 营收与净利润；沿用已有真实数据和金融页面。
+3. **交叉整合**：制度与融资条件可能共同影响经营的机制假说，尚无因果识别或可用的联结面板。
+
+原立项／历史正式题名：《货币互联、制度摩擦与跨境资产定价：欧央行利率冲击对法语区航空租赁的影响研究》。题名变更待学校批准。法律子研究的 CONDITIONAL GO 不替代全项目范围。
+
+## 研究递进与截图视图
+
+- `v3/index.html#top`：完整项目与三模块范围，适合开场截图。
+- `#legal`、`#evidence`、`#case`：法律对照、证据统计、KQ UNKNOWN 边界；既有证据保持原分类。
+- `#finance`：ECB/BCEAO、贷款条件入口及一幅公司财务图；图内标签保留两位小数，表格保留 CSV 原值与逐行精度。
+- `#progression`：已完成金融基础、已完成法律证据基础、未来整合假说；附六个原有演示入口。
+
+金融已完成数据与描述性计算；法律已完成证据基础设施与初步文本比较。许可、实际载运、公司借款成本、更多同口径财报及控制变量仍待补证，不能以缺失填 0、据条文打开放评分，或把利率变化当作利润原因。
+
 
 ## 在线与本地访问
 
-- GitHub Pages 部署后：`https://leamya123.github.io/aerorisk-fr-research/v3/`
+- GitHub Pages 在明确部署本分支后（当前不保证已部署）：`https://leamya123.github.io/aerorisk-fr-research/v3/`
 - 本地联网预览：在仓库根目录运行 `python -m http.server 8000`，打开 `http://localhost:8000/v3/`
-- 断网答辩：直接双击 `v3/offline.html`。页面和证据快照已内嵌；官方来源链接需要网络。
+- 断网答辩：直接双击 `v3/offline.html`。页面、法律证据、财务快照和 SVG 图均已内嵌，不使用 CDN 或联网 fetch。官方来源链接仍需网络；相对路径的原有金融演示需保留完整仓库目录，并用本地 HTTP 服务查看。单独复制 offline.html 不包含其他演示页面。
 
 ## 重新生成
 
@@ -29,7 +47,24 @@ python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 
 ## 答辩操作
 
-1. 首页先说明“区域开放承诺不等于个案许可”。
+1. 首页先说明完整项目的制度、金融与交叉研究三模块，再说明“区域开放承诺不等于个案许可”。
 2. 在法律对照区点击贝宁或塞内加尔筛选，再点击卡片底部官方来源。
 3. 在数据证据区解释 18 行是审计记录，不是 18 条已核实第五航权航线。
 4. 在 Kenya Airways 案例区明确指出：开航陈述已交叉印证，但具体许可与当地付费载运仍为 `UNKNOWN`。
+
+5. 金融区说明五个年度公司观测与银行宏观面板不能混为企业样本。
+6. 研究递进区区分已完成基础与尚待检验的机制。
+
+## DS 协作接口（本次不改变法律 schema）
+
+既有 `data/evidence.json` 与 `window.AERORISK_EVIDENCE` 的六类对象、字段、计数单位和 UNKNOWN 语义保持不变。财务独立使用 `window.AERORISK_FINANCE = {source, rows}`（`data/finance.js`），`rows` 按原 CSV 逐列逐字符串保留，包括 `measurement_precision`、`financial_statement_audit_status`、`notes` 和来源页码；不写入法律计数。`data/airline-financials.svg` 也由同一 CSV 构建；构建审计记录其输入 SHA-256。不要手改生成快照。
+
+本说明为 DS 交接记录，尚未获得 DS 团队确认；本会话未向团队发送消息。未来更改年份覆盖、字段、连接键或分类前，由 DS 团队确认 schema 与观测粒度；不可静默合并季度与年度数据。
+
+## 分支发布与安全访问
+
+答辩前最稳妥的备份是下载本分支的完整 ZIP、解压并打开 `v3/offline.html`，所有法律和金融新内容均可断网展示。六个原始演示保留在原路径；完整交互请在根目录启动 Python HTTP 服务。GitHub 文件预览不是网页部署。
+
+不更改 main 或现有 Pages 设置。若确需在线分支预览，优先独立的临时预览部署，需明确授权与可用部署环境；若要更改现有 Pages 发布源或合并至 main，应先征得许可。任何 PR 保持 draft，不合并。当前未声称已完成公网部署。
+
+实际验证、限制与结果见 [2026-10-24 验证记录](../docs/verification_20261024_v3.md)；六幅截图在 [screenshots/](screenshots/)。

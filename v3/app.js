@@ -2,6 +2,8 @@
 (function(){
   const evidence=window.AERORISK_EVIDENCE;
   if(!evidence||!evidence.data)throw new Error('Evidence snapshot is missing. Run python v3/build.py.');
+  const finance=window.AERORISK_FINANCE;
+  if(!finance || finance.rows.length!==5)throw new Error('Financial snapshot missing or incomplete.');
   const data=evidence.data;
   const sources=Object.fromEntries(data.sources.map(row=>[row.document_id,row]));
   const byId=(id)=>document.getElementById(id);
@@ -21,6 +23,7 @@
     };
     return labels[status]||String(status).replaceAll('_',' ');
   }
+  byId('financialRows').innerHTML=finance.rows.map(row=>'<tr><td>'+esc(row.fiscal_year)+'</td><td>'+esc(row.revenue_billion_xof)+'</td><td>'+esc(row.net_income_billion_xof)+'</td><td>'+esc(row.measurement_precision)+'</td></tr>').join('');
   byId('cutoff').textContent=evidence.evidence_cutoff;
   byId('packaging').textContent=evidence.packaging_date;
 
