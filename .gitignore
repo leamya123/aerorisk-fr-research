@@ -1,0 +1,30 @@
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local virtual environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Optional JavaScript dependencies
+node_modules/
+
+# Operating-system and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Keep research data, outputs/, v3/offline.html, and final screenshots tracked.

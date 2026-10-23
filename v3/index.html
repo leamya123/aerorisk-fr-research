@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="贝宁与塞内加尔外国航空承运人准入制度、证据统计与 Kenya Airways 第五航权案例研究展示。">
+  <title>AeroRisk-FR v3｜西非航空准入研究</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="hero" id="top">
+    <nav class="topbar" aria-label="主导航">
+      <a class="brand" href="../">AeroRisk-FR <span>v3</span></a>
+      <div class="nav-links">
+        <a href="#method">研究方法</a>
+        <a href="#legal">法律对照</a>
+        <a href="#evidence">数据证据</a>
+        <a href="#case">KQ 案例</a>
+      </div>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">FOREIGN AIR CARRIER ACCESS · BENIN / SENEGAL</p>
+        <h1>航权开放，不等于<br><em>个案许可已经取得</em></h1>
+        <p class="hero-copy">一份为答辩设计的可核验研究展示：把区域承诺、国内准入规则、个案授权与实际运营拆开编码，所有结论均可回到官方来源。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#legal">查看法律对照</a>
+          <a class="button ghost" href="data/evidence.json" download>下载证据 JSON</a>
+        </div>
+      </div>
+      <aside class="scope-card" aria-label="研究状态">
+        <div class="scope-head"><span class="pulse"></span> 研究结论</div>
+        <strong>CONDITIONAL GO</strong>
+        <p>范围 B：外国航空承运人准入制度与行政授权机制。</p>
+        <dl>
+          <div><dt>证据截止</dt><dd id="cutoff">—</dd></div>
+          <div><dt>材料打包</dt><dd id="packaging">—</dd></div>
+          <div><dt>因果结论</dt><dd>未声称</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <div class="hero-note"><b>判读规则：</b>官方报告“航线已开通”只能支持运营陈述；若未取得具体许可文件，许可状态必须保持 <span class="status unknown">UNKNOWN</span>。</div>
+  </header>
+
+  <main id="main">
+    <section class="section intro" id="method">
+      <div class="section-heading">
+        <p class="kicker">01 · RESEARCH DESIGN</p>
+        <h2>研究背景与方法</h2>
+        <p>第五航权涉及“本国航司—中间国—目的国”之间的商业承运权。单看航线经过、一般法律开放或媒体报道，都不足以证明某一航司已取得个案许可。</p>
+      </div>
+      <div class="method-grid">
+        <article class="method-card">
+          <span class="step">1</span><h3>规则层</h3>
+          <p>识别 Yamoussoukro Decision、UEMOA 规则及两国航空法典中的一般准入框架。</p>
+          <span class="tag verified">法条可核</span>
+        </article>
+        <article class="method-card">
+          <span class="step">2</span><h3>授权层</h3>
+          <p>查找双边航空协定、指定通知、经营许可和具体航权批准，缺失不以 0 或“默认批准”替代。</p>
+          <span class="tag pending">逐案核验</span>
+        </article>
+        <article class="method-card">
+          <span class="step">3</span><h3>运营层</h3>
+          <p>用监管机构与航司一手材料交叉验证开航陈述，同时与实际逐班记录、当地载运证据区分。</p>
+          <span class="tag reported">报告证据</span>
+        </article>
+      </div>
+      <div class="logic-strip" aria-label="证据链逻辑">
+        <span>区域承诺</span><i>→</i><span>国内法规</span><i>→</i><span>双边协定</span><i>→</i><span>个案许可</span><i>→</i><span>实际运营</span>
+      </div>
+    </section>
+
+    <section class="section legal-section" id="legal">
+      <div class="section-heading split-heading">
+        <div><p class="kicker">02 · LEGAL COMPARISON</p><h2>贝宁与塞内加尔法律对照</h2></div>
+        <p>对照聚焦外国承运人准入、持续监管、资料提交与商业载运边界。点击来源可打开政府公布文本。</p>
+      </div>
+      <div class="country-tabs" role="tablist" aria-label="法律对照筛选">
+        <button class="tab active" data-filter="all" role="tab" aria-selected="true">并列对照</button>
+        <button class="tab" data-filter="BJ" role="tab" aria-selected="false">贝宁</button>
+        <button class="tab" data-filter="SN" role="tab" aria-selected="false">塞内加尔</button>
+      </div>
+      <div class="legal-grid" id="legalGrid" aria-live="polite"></div>
+      <div class="boundary-callout"><b>解释边界：</b>法律规定需要事先许可，不代表任何具体航司已获许可；条文差异也不能直接转化为“开放程度排名”。</div>
+    </section>
+
+    <section class="section evidence-section" id="evidence">
+      <div class="section-heading split-heading">
+        <div><p class="kicker">03 · EVIDENCE AUDIT</p><h2>数据证据统计</h2></div>
+        <p>统计对象是研究材料与编码记录，不是“已核实航线数量”。构建脚本只做结构校验，不替代法律效力与网址可用性复核。</p>
+      </div>
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="evidence-panels">
+        <article class="chart-card">
+          <div class="card-title"><h3>来源核验状态</h3><span>按 25 条来源记录</span></div>
+          <div id="verificationBars" class="bars"></div>
+        </article>
+        <article class="chart-card">
+          <div class="card-title"><h3>证据链完整度</h3><span>3 个候选案例</span></div>
+          <div id="chainMatrix" class="chain-matrix"></div>
+        </article>
+      </div>
+      <div class="source-drawer">
+        <div><h3>官方来源索引</h3><p>页面展示所用核心材料；核验状态描述“我们检查到了什么”，不等于现行法律效力认证。</p></div>
+        <div id="sourceList" class="source-list"></div>
+      </div>
+    </section>
+
+    <section class="section case-section" id="case">
+      <div class="section-heading">
+        <p class="kicker">04 · CASE STUDY</p>
+        <h2>Kenya Airways 第五航权候选案例</h2>
+        <p>Nairobi–Accra–Dakar 航程中的 Accra–Dakar 是候选外国航段。现有证据支持“航司与监管报告相互印证”，但没有闭合塞内加尔端个案许可与当地商业载运证据。</p>
+      </div>
+      <div class="case-layout">
+        <article class="route-card">
+          <div class="route-head"><span>KENYA AIRWAYS</span><span class="status reported">报告交叉印证</span></div>
+          <div class="route-map" aria-label="Nairobi 到 Accra 到 Dakar 航线示意">
+            <div class="airport"><b>NBO</b><small>Nairobi</small></div><div class="route-line"><span>承运国 →</span></div>
+            <div class="airport focus"><b>ACC</b><small>Accra</small></div><div class="route-line active"><span>候选第五航权航段 →</span></div>
+            <div class="airport focus"><b>DSS</b><small>Dakar</small></div>
+          </div>
+          <div class="case-facts" id="caseFacts"></div>
+        </article>
+        <aside class="verdict-card">
+          <p class="verdict-label">当前可下结论</p>
+          <h3>可作为运营报告案例，<br>不可标为“许可已批准”</h3>
+          <div class="verdict-row"><span>开航陈述</span><b class="good">已交叉印证</b></div>
+          <div class="verdict-row"><span>肯尼亚—加纳协定条款</span><b class="partial">部分直接证据</b></div>
+          <div class="verdict-row"><span>塞内加尔端具体许可</span><b class="unknown">UNKNOWN</b></div>
+          <div class="verdict-row"><span>当地付费载运记录</span><b class="unknown">UNKNOWN</b></div>
+        </aside>
+      </div>
+      <div class="timeline" id="caseTimeline"></div>
+      <div class="case-sources" id="caseSources"></div>
+    </section>
+
+    <section class="download-band">
+      <div><p class="kicker">DEFENCE READY</p><h2>在线展示与离线备份使用同一份证据快照</h2><p>断网时直接打开 <code>v3/offline.html</code>；联网时官方来源按钮可跳转原文。</p></div>
+      <div class="download-actions"><a class="button primary" href="offline.html" download>下载离线单页</a><a class="button dark" href="README.md">查看操作说明</a></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>AeroRisk-FR v3</b><span>研究展示，不构成法律意见或航权批准证明。</span></div>
+    <a href="#top">返回顶部 ↑</a>
+  </footer>
+  <noscript>本页面需要 JavaScript 读取本地证据快照。离线展示请允许浏览器运行本地脚本。</noscript>
+  <script src="data/evidence.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -53,6 +53,15 @@ def table(rows, fields):
     lines = ['| ' + ' | '.join(fields) + ' |', '| ' + ' | '.join('---' for _ in fields) + ' |']
     return '\n'.join(lines + ['| ' + ' | '.join(cell(row.get(f,'')) for f in fields) + ' |' for row in rows])
 
+def canonical_sha256(path):
+    """Hash text inputs independently of the checkout's CRLF/LF convention."""
+    payload = path.read_bytes().replace(b'\r\n', b'\n')
+    return hashlib.sha256(payload).hexdigest()
+
+def write_text(path, content):
+    """Write deterministic UTF-8/LF output on Windows and Linux."""
+    path.write_bytes(content.replace('\r\n', '\n').encode('utf-8'))
+
 def build(root=ROOT):
     data = load(root)
     counts = validate(data)
@@ -60,16 +69,16 @@ def build(root=ROOT):
     output.mkdir(exist_ok=True)
     snapshot = {'evidence_cutoff':'2026-10-19','packaging_date':'2026-10-22',
                 'decision':'CONDITIONAL GO; scope B', 'counts':counts, 'data':data}
-    (output/'evidence.json').write_text(json.dumps(snapshot, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    write_text(output/'evidence.json', json.dumps(snapshot, ensure_ascii=False, indent=2)+'\n')
     for name,key,fields in [
         ('legal_comparison.md','articles',['row_id','country','article','paired_article','comparative_finding','interpretation_boundary','source_id','source_locator']),
         ('route_gaps.md','chains',['chain_id','carrier','candidate_foreign_segment','specific_ASA_terms','specific_permit','operation','gap']),
         ('source_index.md','sources',['document_id','original_title','verification_status','official_url','relevant_page_or_article'])]:
-        (output/name).write_text('# '+name.removesuffix('.md')+'\n\n'+table(data[key],fields)+'\n',encoding='utf-8')
-    hashes = {name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name,_ in TABLES.values()}
-    (output/'audit.json').write_text(json.dumps({'counts':counts,'input_sha256':hashes,
+        write_text(output/name, '# '+name.removesuffix('.md')+'\n\n'+table(data[key],fields)+'\n')
+    hashes = {name:canonical_sha256(root/name) for name,_ in TABLES.values()}
+    write_text(output/'audit.json', json.dumps({'counts':counts,'input_sha256':hashes,
         'checks':'IDs, references, URL syntax, status vocabulary',
-        'not_checked':'URL availability, current legal validity, independent translation, novelty, real route operation'},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        'not_checked':'URL availability, current legal validity, independent translation, novelty, real route operation'},ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(counts,ensure_ascii=False))
     return counts
 

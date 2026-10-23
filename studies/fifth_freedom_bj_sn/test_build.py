@@ -3,7 +3,7 @@ import tempfile
 import unittest
 import shutil
 from pathlib import Path
-from build import ROOT, TABLES, load, validate, build
+from build import ROOT, TABLES, load, validate, build, canonical_sha256
 
 class EvidenceIntegrityTests(unittest.TestCase):
     def test_missing_source_is_rejected(self):
@@ -26,5 +26,19 @@ class EvidenceIntegrityTests(unittest.TestCase):
             first={p.name:p.read_bytes() for p in (root/'outputs').iterdir()}
             build(root)
             self.assertEqual(first,{p.name:p.read_bytes() for p in (root/'outputs').iterdir()})
+
+    def test_committed_outputs_match_fresh_build(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            for name,_ in TABLES.values(): shutil.copyfile(ROOT/name,root/name)
+            build(root)
+            for generated in (root/'outputs').iterdir():
+                self.assertEqual(generated.read_bytes(), (ROOT/'outputs'/generated.name).read_bytes(), generated.name)
+
+    def test_audit_hashes_match_canonical_inputs(self):
+        import json
+        audit=json.loads((ROOT/'outputs/audit.json').read_text(encoding='utf-8'))
+        for name,expected in audit['input_sha256'].items():
+            self.assertEqual(expected,canonical_sha256(ROOT/name),name)
 
 if __name__=='__main__': unittest.main()

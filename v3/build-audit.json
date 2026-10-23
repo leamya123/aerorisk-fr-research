@@ -1,0 +1,10 @@
+{
+  "source": "studies/fifth_freedom_bj_sn/outputs/evidence.json",
+  "source_sha256": "3a1cd47d43628efe959ee9898d605cabc4b5d0be33b44282a7447f135fc3a9f8",
+  "artifacts": {
+    "data/evidence.json": "3a1cd47d43628efe959ee9898d605cabc4b5d0be33b44282a7447f135fc3a9f8",
+    "data/evidence.js": "6c82453a68d837b572a6a94d2e95d2d3383691be74631d7ffd6fdea7a207d58e",
+    "offline.html": "450ed77a64dfbfbf6fada6818bb08d43ad6af65273a8df71e6100fc784c15e7b"
+  },
+  "guardrail": "Kenya Airways specific permit and local paid carriage remain UNKNOWN"
+}

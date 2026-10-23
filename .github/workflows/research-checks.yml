@@ -19,6 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Rebuild fifth-freedom evidence package
+        run: python studies/fifth_freedom_bj_sn/build.py
+      - name: Verify evidence outputs reproduce exactly
+        run: git diff --exit-code -- studies/fifth_freedom_bj_sn/outputs
+      - name: Rebuild v3 online and offline presentation artifacts
+        run: python v3/build.py
+      - name: Verify v3 artifacts reproduce exactly
+        run: git diff --exit-code -- v3/data v3/offline.html v3/build-audit.json
       - name: Compile all frontend JavaScript and smoke-test dashboard
         run: node scripts/validate_dashboard.js
       - name: Rebuild policy panel
@@ -41,3 +49,5 @@ jobs:
         run: python src/explore_quarterly_lags.py
       - name: Unit and data integrity tests
         run: python -m unittest discover -s tests -v
+      - name: Fifth-freedom evidence integrity tests
+        run: python -m unittest discover -s studies/fifth_freedom_bj_sn -p 'test_*.py' -v

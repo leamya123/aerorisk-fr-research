@@ -25,6 +25,7 @@
 
 ## 在线演示
 
+- **[v3 · 贝宁—塞内加尔航空准入研究展示](https://leamya123.github.io/aerorisk-fr-research/v3/)** — 法律条文对照、证据审计与 Kenya Airways 第五航权候选案例；具体许可未取得时明确显示 `UNKNOWN`
 - **[AeroRisk-FR 风险模拟器](https://leamya123.github.io/aerorisk-fr-research/prototype/)** — 假设情景的预期现金流、月租金与法律延迟压力测试，**不等于市场报价**
 - **[2020Q1—2026Q2 连续季度实证数据库](https://leamya123.github.io/aerorisk-fr-research/quarterly/)** — UEMOA/塞内加尔/科特迪瓦 26 季银行贷款成本，附所选公报版本、季末 ECB/BCEAO 及第一差分
 - **[2020–2025 年度信贷数据](https://leamya123.github.io/aerorisk-fr-research/annual/)** — 6 年 × 7 组 BCEAO 官方银行信贷成本系列（UEMOA、科特迪瓦、塞内加尔、贷款用途）

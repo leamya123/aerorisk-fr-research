@@ -15,7 +15,9 @@ const vm = require('node:vm');
 
 const ROOT = path.resolve(__dirname, '..');
 const PAGES = ['index.html', 'prototype/index.html', 'macro/index.html',
-               'transmission/index.html', 'annual/index.html', 'quarterly/index.html'];
+               'transmission/index.html', 'annual/index.html', 'quarterly/index.html',
+               'v3/index.html', 'v3/offline.html'];
+const EXTERNAL_SCRIPTS = ['v3/data/evidence.js', 'v3/app.js'];
 
 function getScripts(relativePath) {
   const html = fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
@@ -32,6 +34,11 @@ async function main() {
       total++;
     }
     console.log('Syntax OK:', p, '(' + sources.length + ' scripts)');
+  }
+  for (const p of EXTERNAL_SCRIPTS) {
+    new vm.Script(fs.readFileSync(path.join(ROOT, p), 'utf8'), {filename: p});
+    total++;
+    console.log('Syntax OK:', p, '(external script)');
   }
   const source = getScripts('annual/index.html')[0];
   if (!source) throw new Error('annual/index.html missing inline JavaScript');
