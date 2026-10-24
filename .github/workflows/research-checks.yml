@@ -27,6 +27,10 @@ jobs:
         run: python v3/build.py
       - name: Verify v3 artifacts reproduce exactly
         run: git diff --exit-code -- v3/data v3/offline.html v3/build-audit.json
+      - name: Recheck archived DS delivery against canonical data
+        run: python studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/review.py
+      - name: Verify archived DS review result reproduces exactly
+        run: git diff --exit-code -- studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/review_results.json
       - name: Compile all frontend JavaScript and smoke-test dashboard
         run: node scripts/validate_dashboard.js
       - name: Rebuild policy panel

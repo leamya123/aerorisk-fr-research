@@ -22,7 +22,7 @@
 
 ## 在线与本地访问
 
-- GitHub Pages 在明确部署本分支后（当前不保证已部署）：`https://leamya123.github.io/aerorisk-fr-research/v3/`
+- main 经 Pages 部署后的正式入口：`https://leamya123.github.io/aerorisk-fr-research/v3/`
 - 本地联网预览：在仓库根目录运行 `python -m http.server 8000`，打开 `http://localhost:8000/v3/`
 - 断网答辩：直接双击 `v3/offline.html`。页面、法律证据、财务快照和 SVG 图均已内嵌，不使用 CDN 或联网 fetch。官方来源链接仍需网络；相对路径的原有金融演示需保留完整仓库目录，并用本地 HTTP 服务查看。单独复制 offline.html 不包含其他演示页面。
 
@@ -36,7 +36,7 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 ```
 
-最新本地复验：30 项仓库测试、6 项法律证据测试及前端 9 个 HTML 页面校验均通过；v3 展示测试现为 6 项（新增 Git 换行检出测试）。最新远端 CI 结果需按 PR 最新提交核验，不能沿用旧交付记录。Windows 双击 `offline.html` 仍需在最终答辩电脑断网复核。
+最新本地复验：30 项仓库测试、6 项法律证据测试及前端 10 个 HTML 页面校验均通过；v3 展示测试现为 6 项（新增 Git 换行检出测试）。最新远端 CI 结果需按 PR 最新提交核验，不能沿用旧交付记录。Windows 双击 `offline.html` 仍需在最终答辩电脑断网复核。
 
 `v3/data/evidence.json` 是给页面和后续图表协作使用的稳定数据接口。上游唯一来源为 `studies/fifth_freedom_bj_sn/outputs/evidence.json`，请勿手改生成文件。
 
@@ -63,13 +63,13 @@ python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 
 既有 `data/evidence.json` 与 `window.AERORISK_EVIDENCE` 的六类对象、字段、计数单位和 UNKNOWN 语义保持不变。财务独立使用 `window.AERORISK_FINANCE = {source, rows}`（`data/finance.js`），`rows` 按原 CSV 逐列逐字符串保留，包括 `measurement_precision`、`financial_statement_audit_status`、`notes` 和来源页码；不写入法律计数。`data/airline-financials.svg` 也由同一 CSV 构建；构建审计记录其输入 SHA-256。不要手改生成快照。
 
-本说明为 DS 交接记录，尚未获得 DS 团队确认；本会话未向团队发送消息。未来更改年份覆盖、字段、连接键或分类前，由 DS 团队确认 schema 与观测粒度；不可静默合并季度与年度数据。
+DS 交付已经内部一致性与计算复核并归档，见[审计成果](../studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/README.md)。这不代表全部外部事实或未来连接方案已获确认；未来更改年份覆盖、字段、连接键或分类前，由 DS 团队确认 schema 与观测粒度；不可静默合并季度与年度数据。
 
 ## 分支发布与安全访问
 
 答辩前最稳妥的备份是下载本分支的完整 ZIP、解压并打开 `v3/offline.html`，所有法律和金融新内容均可断网展示。六个原始演示保留在原路径；完整交互请在根目录启动 Python HTTP 服务。GitHub 文件预览不是网页部署。
 
-不更改 main 或现有 Pages 设置。若确需在线分支预览，优先独立的临时预览部署，需明确授权与可用部署环境；若要更改现有 Pages 发布源或合并至 main，应先征得许可。任何 PR 保持 draft，不合并。当前未声称已完成公网部署。
+PR #1 已合并；研究者已授权将通过核验的后续成果整合到 main。main 为正式展示版本，沿用既有 Pages 发布方式。研究分支保留历史；新增成果应通过验证后合并，避免直接改写正式证据。
 
 实际验证、限制与结果见 [2026-10-24 验证记录](../docs/verification_20261024_v3.md)；六幅截图在 [screenshots/](screenshots/)。
 
@@ -77,7 +77,7 @@ python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 
 离线版提供“下载证据 JSON”与“返回页首”两个实际可用操作。操作说明保留在本 README 和交接包中，不在展示页内展开；展示页不放内部操作说明按钮。原始财务表独立内嵌，不混入法律 schema。
 
-根首页现为完整课题导航；原首页所跳转的租赁原型仍在 `prototype/`，五个独立金融／情景演示目录保持不变。当前 PR 保持 Draft，等待研究者最终确认；[合并前检查与发布方案](../docs/premerge_review_pr1_20261024.md)记录远端 CI、资产保留、公开资料审查和部署边界。
+根首页现为完整课题导航；原首页所跳转的租赁原型仍在 `prototype/`，五个独立金融／情景演示目录保持不变。PR #1 已合并；以下为当时的历史验收记录，[合并前检查与发布方案](../docs/premerge_review_pr1_20261024.md)记录当时远端 CI、资产保留、公开资料审查和部署边界。当前成果入口为[研究成果与资料](../research/)。
 
 ## 金融源字节跨平台一致性
 

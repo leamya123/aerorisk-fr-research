@@ -1,7 +1,14 @@
-# AeroRisk-FR · 中期答辩研究工作区
+# 云程有数：西非法语区航空业的制度开放与金融约束研究
+
+
+**在线展示：[项目首页](https://leamya123.github.io/aerorisk-fr-research/) · [v3 综合展示](https://leamya123.github.io/aerorisk-fr-research/v3/) · [研究成果与资料](https://leamya123.github.io/aerorisk-fr-research/research/)**
+
+PR #1 已以 merge commit 合并。文献核验、法语组修订工作簿与 DS 审计成果本次继续整合；不删除旧成果或重写 Git 历史。
+
+2026-10-24 数据复核：**[DS交付与验收说明](studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/README.md)**（原始Excel、清洗CSV/JSON、图表与可复现审计）。已通过内部一致性和计算核验；使用时须保留金融版本差异与候选航线证据限制，未替换主数据。
 
 **当前项目： 《云程有数：西非法语区航空业的制度开放与金融约束研究》**
-中期答辩：2026-10-28。研究分支：`research/fifth-freedom-bj-sn-v3`。
+中期答辩：2026-10-28。`main` 为正式展示与维护入口；研究分支保留历史。新增成果经复核后整合到 main，原始资料与衍生快照分层保留。
 
 项目包含三个相互衔接但证据强度不同的模块：
 
@@ -15,7 +22,7 @@
 
 完整答辩包包含研究历程、中期进展报告、12页PPT逐页内容与备注、5—7分钟讲稿、22个问答、研究路线图、任务表及来源索引。`content.md` 可在GitHub阅读和协作修改，`index.html` 为可离线打开、复制与打印的网页版本；两者修改时需同步。本包是PPT制作文字资料，尚非正式排版的幻灯片。
 
-分支中的HTML文件不等于已部署的 GitHub Pages。完整项目交互展示打开 `v3/offline.html`，完整答辩文字资料打开 `docs/midterm_20261028/index.html`。正文说明的是融资环境与潜在约束，尚未直接测量航司融资约束或识别制度与金融的联合因果效应。
+网站由 main 通过 GitHub Pages 发布；当前版本以最新部署成功的提交为准。完整项目交互展示打开 `v3/offline.html`，完整答辩文字资料打开 `docs/midterm_20261028/index.html`。正文说明的是融资环境与潜在约束，尚未直接测量航司融资约束或识别制度与金融的联合因果效应。
 
 ## 研究递进：已完成与待验证
 

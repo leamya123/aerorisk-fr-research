@@ -1,0 +1,119 @@
+{
+  "review_date": "2026-10-24",
+  "baseline_commit": "61c225bf91dc0d52f4bac919ff4d27735ac54a48",
+  "ds_legal_audit_declared_commit": "f115e9bbfda6723f66950c67c03b306f7a1a73f9",
+  "scope": "Internal reconciliation, field preservation and arithmetic; no fresh URL/legal/financial statement certification",
+  "tables": {
+    "sources": {
+      "records": 25,
+      "duplicate_ids": 0,
+      "original_cells_equal": 475,
+      "added_fields": [
+        "citation_locator_present",
+        "source_domain",
+        "source_group",
+        "url_check_checked_at_utc",
+        "url_check_http_status",
+        "url_check_method",
+        "url_check_outcome",
+        "url_check_provenance",
+        "url_check_reachable",
+        "url_check_snapshot_packaged_at_utc"
+      ],
+      "json_matches_csv": true
+    },
+    "events": {
+      "records": 11,
+      "duplicate_ids": 0,
+      "original_cells_equal": 143,
+      "added_fields": [
+        "date_precision",
+        "source_reference_valid"
+      ],
+      "json_matches_csv": true
+    },
+    "routes": {
+      "records": 18,
+      "duplicate_ids": 0,
+      "original_cells_equal": 234,
+      "added_fields": [
+        "canonical_itinerary_key",
+        "confirmed_fifth_freedom_authorization",
+        "confirmed_fifth_freedom_operation",
+        "record_scope",
+        "source_reference_valid",
+        "verification_disposition"
+      ],
+      "json_matches_csv": true
+    },
+    "articles": {
+      "records": 9,
+      "duplicate_ids": 0,
+      "original_cells_equal": 144,
+      "added_fields": [
+        "source_reference_valid",
+        "translation_status"
+      ],
+      "json_matches_csv": true
+    }
+  },
+  "figures": {
+    "route_field_coverage": {
+      "source_id": 18,
+      "full_itinerary_as_reported": 18,
+      "carrier_as_reported": 7,
+      "candidate_foreign_segment": 4,
+      "carrier_home_state_verified": 0,
+      "authorization_document": 0,
+      "actual_flight_date": 0
+    },
+    "local_carriage_UNKNOWN": 18,
+    "date_precision": {
+      "EXACT_DATE": 5,
+      "ANCHOR_ONLY": 6
+    },
+    "source_counts": [
+      22,
+      2,
+      1
+    ],
+    "duplicate_itinerary_records": [
+      [
+        "R03",
+        "R07"
+      ]
+    ]
+  },
+  "legal_missingness_fields_checked": 61,
+  "finance": {
+    "annual_values_matched": 18,
+    "airline_values_matched": 10,
+    "formulas_independently_recomputed": {
+      "B14": "-7.00",
+      "C14": "-19.00",
+      "D14": "5.00",
+      "E26": "44.00",
+      "E27": "114.00"
+    },
+    "unit_conversions_checked": 2,
+    "old_vintage_change_bp": -25,
+    "selected_vintage_change_bp": "-27.00",
+    "financial_workbook_scope": "Three annual regional/country series; not all seven annual series"
+  },
+  "input_sha256": {
+    "originals/cleaned_data_20261024.zip": "bb3191e6125ddd756e29417e4e5a7e78e0f9fb8f0c936838addc6f95319cfa32",
+    "originals/financial_data_audit_20261024.xlsx": "9fdf17fe539d9a6c195a85edd651d8c880c06bc5c99aae5477badb6062ae8c2d",
+    "originals/legal_data_audit_20261024.xlsx": "17cd1180d1389ca06ab9bbe207f0eeb910626d54302969fdea9e7bc29333c0eb",
+    "cleaned/README_交付说明.md": "2371a1df8defac0d27906cf6f46b040ff805100afdbc5a4e305370b95f3ba54e",
+    "cleaned/audit_summary.json": "576bb889024df220f0619a0dc953d4450436364cbface8fd5fb1d69561fc5d5b",
+    "cleaned/evidence.cleaned.json": "71f41e23e88ea93c906b8be92307f7b37eae397efc3d58c1f8af1b6b62be1f72",
+    "cleaned/legal_article_matrix.cleaned.csv": "39bb19fea0a1ed225a67b2ea1e3dd728e477b755731451d417844ac4f1aa547c",
+    "cleaned/official_source_registry.cleaned.csv": "4f19b1b89174c26024805cfabf0e5618f1579816e2888c33420832493be87107",
+    "cleaned/policy_events.cleaned.csv": "79f5deef993b026794db513a6b1b63c7a6991a90583518bc15133f8671ede334",
+    "cleaned/route_evidence_audit.cleaned.csv": "abace957dd082d37e0661e351b20d988806aaf00abc2f6d055c498a5be29d448",
+    "figures/policy_event_timeline.jpg": "9f1ff40040ca5f62468611196913250ef96be4f18ce54b8b174babdf49f96d80",
+    "figures/route_evidence_coverage.jpg": "80b3cf9fdac392851cb553fd2751cf152a192244b9c2b16a7cbfb56fc878f398",
+    "figures/source_structure.jpg": "011e7ef2125219dad6fcba73e02a5cd982369ab476cf75b736f38d4d344e3a31"
+  },
+  "decision": "ACCEPT_FOR_ARCHIVE_AND_MIDTERM_WITH_REVIEW_NOTES; NOT_A_CANONICAL_DATA_REPLACEMENT"
+}

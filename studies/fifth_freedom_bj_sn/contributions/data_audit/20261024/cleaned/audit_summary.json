@@ -1,0 +1,63 @@
+{
+  "evidence_cutoff": "2026-10-19",
+  "packaging_date": "2026-10-24",
+  "records": {
+    "sources": 25,
+    "events": 11,
+    "routes": 18,
+    "articles": 9
+  },
+  "source_urls": {
+    "historical_http_200_or_206": [
+      "AU01",
+      "YD01",
+      "BJ01",
+      "BJ02",
+      "BJ04",
+      "BJ05",
+      "SN01",
+      "SN02",
+      "BJ07",
+      "AF01",
+      "AF02",
+      "IC01",
+      "BJ08",
+      "BJ09",
+      "SN03",
+      "KQ01",
+      "AJ01",
+      "BJ10",
+      "BJ11",
+      "KG01",
+      "KG02"
+    ],
+    "historical_http_non_success": [
+      "BJ06"
+    ],
+    "historical_unknown": [
+      "UE01",
+      "BJ03",
+      "CN01"
+    ],
+    "exact_check_time_missing": 25,
+    "check_method_unknown": 25
+  },
+  "event_date_precision": {
+    "EXACT_DATE": 5,
+    "ANCHOR_ONLY": 6
+  },
+  "routes": {
+    "candidate_audit_records": 18,
+    "confirmed_authorization_values_filled": 0,
+    "confirmed_operation_values_filled": 0,
+    "duplicate_canonical_itinerary_ids": [
+      "R03",
+      "R07"
+    ]
+  },
+  "limits": [
+    "Historical HTTP responses do not establish current accessibility.",
+    "Internal source references do not independently verify claim truth.",
+    "Individual route permits and actual operations remain unverified."
+  ]
+}

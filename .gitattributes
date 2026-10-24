@@ -6,3 +6,10 @@ v3/screenshots/*.png binary
 
 # The v3 audit hashes these source bytes; keep identical on Windows and Linux.
 data/official/airline_financials_candidate_v1.csv text eol=lf
+
+# DS delivery inputs are byte-audited originals; preserve their mixed delivered EOLs.
+studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/cleaned/** -text whitespace=cr-at-eol
+studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/originals/** binary
+studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/figures/*.jpg binary
+studies/fifth_freedom_bj_sn/contributions/literature/*.xlsx binary
+studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/review_results.json text eol=lf
