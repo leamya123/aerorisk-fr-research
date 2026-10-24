@@ -28,3 +28,6 @@ Desktop.ini
 *~
 
 # Keep research data, outputs/, v3/offline.html, and final screenshots tracked.
+
+# Local handoff archives (large generated ZIPs and copied deliverables)
+deliverables/
