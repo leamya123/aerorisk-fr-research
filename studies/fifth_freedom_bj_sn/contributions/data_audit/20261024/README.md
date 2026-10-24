@@ -44,3 +44,8 @@ python studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/review.py
 或打开本目录`review.ipynb`运行全部单元。脚本只依赖Python标准库，不联网、不填补缺失、不修改原始工作簿。断言失败必须调查，不得修改数据以迎合测试。
 
 当前可启动中期PPT，展示真实数据整理、版本审计、法律证据分层和研究局限。第五航权批准文件、付费区间承运权、法条适用及生效时间仍待研究者核实；这些不足不妨碍报告中期进展，但不允许宣称已证明自由化效果或已完成投稿研究。
+
+
+## 展示图文件名勘误（整合时目视复核）
+
+原交付的 `figures/policy_event_timeline.jpg` 图内标题实际为“来源结构”，`figures/source_structure.jpg` 图内标题实际为“政策事件时间线”。为保留原始交付字节与输入哈希，不重命名或修改原图。正式 `research/` 展示页按图内实际内容对应图注：事件时间线使用 source_structure.jpg，来源结构使用 policy_event_timeline.jpg。引用或下载时请按此勘误识别；route_evidence_coverage.jpg 对应候选审计覆盖图，不受影响。
