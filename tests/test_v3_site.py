@@ -1,5 +1,6 @@
 import json
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -45,6 +46,35 @@ class V3PresentationTests(unittest.TestCase):
         audit=json.loads((SITE/'build-audit.json').read_text(encoding='utf-8'))
         import hashlib
         self.assertEqual(audit['financial_source_sha256'],hashlib.sha256(FINANCE_SOURCE.read_bytes()).hexdigest())
+
+    def test_financial_source_checkout_is_stable_across_autocrlf(self):
+        # Exercise Git's real checkout filters, not a normalized test-only hash.
+        # No remote or commit is needed for this isolated fixture.
+        relative=FINANCE_SOURCE.relative_to(ROOT)
+        expected=FINANCE_SOURCE.read_bytes()
+        audit=json.loads((SITE/'build-audit.json').read_text(encoding='utf-8'))
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            fixture=Path(tmp)/'repo'
+            fixture.mkdir()
+            def git(*args):
+                return subprocess.run(['git','-C',str(fixture),*args],check=True,
+                                      stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            git('init','--quiet')
+            (fixture/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
+            source=fixture/relative
+            source.parent.mkdir(parents=True)
+            source.write_bytes(expected)
+            git('-c','core.autocrlf=false','add','.gitattributes',relative.as_posix())
+            for autocrlf in ('true','false'):
+                with self.subTest(autocrlf=autocrlf):
+                    checkout=Path(tmp)/('checkout-'+autocrlf)
+                    git('-c','core.autocrlf='+autocrlf,'checkout-index','--all',
+                        '--prefix='+checkout.as_posix()+'/')
+                    actual=(checkout/relative).read_bytes()
+                    self.assertEqual(actual,expected)
+                    self.assertNotIn(b'\r\n',actual)
+                    self.assertEqual(hashlib.sha256(actual).hexdigest(),audit['financial_source_sha256'])
 
     def test_offline_page_is_self_contained(self):
         page=(SITE/'offline.html').read_text(encoding='utf-8')

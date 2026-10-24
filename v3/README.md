@@ -36,7 +36,7 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 ```
 
-当前验收结果：29 项仓库测试、6 项法律证据测试及前端 9 个 HTML 页面校验均通过；v3 展示测试现为 5 项。Windows 双击 `offline.html` 仍需在最终答辩电脑断网复核。
+最新本地复验：30 项仓库测试、6 项法律证据测试及前端 9 个 HTML 页面校验均通过；v3 展示测试现为 6 项（新增 Git 换行检出测试）。最新远端 CI 结果需按 PR 最新提交核验，不能沿用旧交付记录。Windows 双击 `offline.html` 仍需在最终答辩电脑断网复核。
 
 `v3/data/evidence.json` 是给页面和后续图表协作使用的稳定数据接口。上游唯一来源为 `studies/fifth_freedom_bj_sn/outputs/evidence.json`，请勿手改生成文件。
 
@@ -78,3 +78,9 @@ python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 离线版提供“下载证据 JSON”与“返回页首”两个实际可用操作。操作说明保留在本 README 和交接包中，不在展示页内展开；展示页不放内部操作说明按钮。原始财务表独立内嵌，不混入法律 schema。
 
 根首页现为完整课题导航；原首页所跳转的租赁原型仍在 `prototype/`，五个独立金融／情景演示目录保持不变。当前 PR 保持 Draft，等待研究者最终确认；[合并前检查与发布方案](../docs/premerge_review_pr1_20261024.md)记录远端 CI、资产保留、公开资料审查和部署边界。
+
+## 金融源字节跨平台一致性
+
+`financial_source_sha256` 继续使用源 CSV 的原始字节 SHA-256，不做忽略差异的哈希处理。`.gitattributes` 将 `data/official/airline_financials_candidate_v1.csv` 固定为 `text eol=lf`，确保 Git 在 Windows 与 Linux 检出相同字节；请勿用编辑器将该文件另存为 CRLF 后提交旧审计。修改后须先重建，再检查产物差异。
+
+[本次故障与最终验收记录](../docs/v3_line_endings_acceptance_20261024.md)说明根因、36项测试与旧交付的对应关系。原金融数值、法律证据、截图、离线页面不因换行修复而改写。
