@@ -1,5 +1,7 @@
 # AeroRisk-FR · 中期答辩研究工作区
 
+2026-10-24 数据复核：**[DS交付与验收说明](studies/fifth_freedom_bj_sn/contributions/data_audit/20261024/README.md)**（原始Excel、清洗CSV/JSON、图表与可复现审计）。已通过内部一致性和计算核验；使用时须保留金融版本差异与候选航线证据限制，未替换主数据。
+
 **当前项目： 《云程有数：西非法语区航空业的制度开放与金融约束研究》**
 中期答辩：2026-10-28。研究分支：`research/fifth-freedom-bj-sn-v3`。
 
