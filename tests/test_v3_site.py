@@ -69,8 +69,9 @@ class V3PresentationTests(unittest.TestCase):
         self.assertTrue(href.startswith('data:application/json;charset=utf-8,'))
         self.assertEqual(json.loads(unquote(href.split(',',1)[1])),json.loads(SOURCE.read_text(encoding='utf-8-sig')))
         self.assertIn('href="#top">返回页首',page)
-        self.assertIn('href="#offline-help">查看离线说明',page)
-        self.assertIn('id="offline-help"',page)
+        self.assertNotIn('offline-help',page)
+        self.assertNotIn('查看离线说明',page)
+        self.assertNotIn('查看操作说明',page)
         self.assertNotIn('href="#top">下载离线单页',page)
         self.assertNotIn('href="#method">查看操作说明',page)
 
