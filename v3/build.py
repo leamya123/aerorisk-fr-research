@@ -74,7 +74,7 @@ def build(output_dir=SITE,template_dir=SITE,source=SOURCE):
         rows=list(csv.DictReader(stream))
     if [row['fiscal_year'] for row in rows]!=['2019','2020','2021','2022','2023']:
         raise ValueError('Financial coverage changed; review the presentation and DS contract before building')
-    finance={'source':str(FINANCE_SOURCE.relative_to(ROOT)), 'rows':rows}
+    finance={'source':str(FINANCE_SOURCE.relative_to(ROOT)).replace('\\','/'), 'rows':rows}
     _write(output_dir/'data/finance.js','window.AERORISK_FINANCE = '+json.dumps(finance,ensure_ascii=False,separators=(',',':'))+';\n')
     chart=financial_chart(rows)
     _write(output_dir/'data/airline-financials.svg',chart)
@@ -98,7 +98,7 @@ def build(output_dir=SITE,template_dir=SITE,source=SOURCE):
     offline=offline.replace('href="README.md">查看操作说明', 'href="#offline-help">查看离线说明')
     _write(output_dir/'offline.html',offline)
     artifacts={name:_sha((output_dir/name).read_bytes()) for name in GENERATED if name!='build-audit.json'}
-    audit={'source':str(source.relative_to(ROOT)).replace('\\','/'),'source_sha256':_sha(source.read_bytes()),'financial_source':str(FINANCE_SOURCE.relative_to(ROOT)),'financial_source_sha256':_sha(FINANCE_SOURCE.read_bytes()),'artifacts':artifacts,'guardrail':'Kenya Airways specific permit and local paid carriage remain UNKNOWN'}
+    audit={'source':str(source.relative_to(ROOT)).replace('\\','/'),'source_sha256':_sha(source.read_bytes()),'financial_source':str(FINANCE_SOURCE.relative_to(ROOT)).replace('\\','/'),'financial_source_sha256':_sha(FINANCE_SOURCE.read_bytes()),'artifacts':artifacts,'guardrail':'Kenya Airways specific permit and local paid carriage remain UNKNOWN'}
     _write(output_dir/'build-audit.json',json.dumps(audit,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'site':'v3','counts':evidence['counts'],'generated':list(GENERATED)},ensure_ascii=False))
     return evidence

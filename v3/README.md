@@ -36,6 +36,8 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s studies/fifth_freedom_bj_sn -p "test_*.py" -v
 ```
 
+当前验收结果：29 项仓库测试、6 项法律证据测试及前端 9 个 HTML 页面校验均通过；v3 展示测试现为 5 项。Windows 双击 `offline.html` 仍需在最终答辩电脑断网复核。
+
 `v3/data/evidence.json` 是给页面和后续图表协作使用的稳定数据接口。上游唯一来源为 `studies/fifth_freedom_bj_sn/outputs/evidence.json`，请勿手改生成文件。
 
 ## 数据接口约定
