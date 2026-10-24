@@ -1,0 +1,109 @@
+import json
+import shutil
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'v3'))
+from build import SITE, SOURCE, FINANCE_SOURCE, GENERATED, build, validate
+
+class V3PresentationTests(unittest.TestCase):
+    def test_contract_and_kq_guardrail(self):
+        evidence=json.loads(SOURCE.read_text(encoding='utf-8-sig'))
+        validate(evidence)
+        kq=next(row for row in evidence['data']['chains'] if row['chain_id']=='CH01')
+        self.assertEqual(kq['specific_permit'],'UNKNOWN')
+        self.assertEqual(kq['local_paid_carriage'],'UNKNOWN')
+
+    def test_page_has_four_required_sections_and_no_approval_claim(self):
+        html=(SITE/'index.html').read_text(encoding='utf-8')
+        for section in ('id="method"','id="legal"','id="evidence"','id="case"'):
+            self.assertIn(section,html)
+        self.assertIn('不可标为“许可已批准”',html)
+        self.assertNotIn('class="good">许可已批准',html)
+
+    def test_generated_site_is_reproducible(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp)
+            build(output_dir=out)
+            for name in GENERATED:
+                self.assertEqual((out/name).read_bytes(),(SITE/name).read_bytes(),name)
+
+    def test_finance_snapshot_preserves_source_values_and_metadata(self):
+        import csv
+        with FINANCE_SOURCE.open(encoding='utf-8-sig',newline='') as stream:
+            expected=list(csv.DictReader(stream))
+        script=(SITE/'data/finance.js').read_text(encoding='utf-8')
+        snapshot=json.loads(script.removeprefix('window.AERORISK_FINANCE = ').rstrip().removesuffix(';'))
+        self.assertEqual(snapshot['rows'],expected)
+        chart=(SITE/'data/airline-financials.svg').read_text(encoding='utf-8')
+        for row in expected:
+            for field in ('revenue_billion_xof','net_income_billion_xof'):
+                self.assertIn(row['fiscal_year']+' '+field+': '+row[field],chart)
+        audit=json.loads((SITE/'build-audit.json').read_text(encoding='utf-8'))
+        import hashlib
+        self.assertEqual(audit['financial_source_sha256'],hashlib.sha256(FINANCE_SOURCE.read_bytes()).hexdigest())
+
+    def test_financial_source_checkout_is_stable_across_autocrlf(self):
+        # Exercise Git's real checkout filters, not a normalized test-only hash.
+        # No remote or commit is needed for this isolated fixture.
+        relative=FINANCE_SOURCE.relative_to(ROOT)
+        expected=FINANCE_SOURCE.read_bytes()
+        audit=json.loads((SITE/'build-audit.json').read_text(encoding='utf-8'))
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            fixture=Path(tmp)/'repo'
+            fixture.mkdir()
+            def git(*args):
+                return subprocess.run(['git','-C',str(fixture),*args],check=True,
+                                      stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            git('init','--quiet')
+            (fixture/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
+            source=fixture/relative
+            source.parent.mkdir(parents=True)
+            source.write_bytes(expected)
+            git('-c','core.autocrlf=false','add','.gitattributes',relative.as_posix())
+            for autocrlf in ('true','false'):
+                with self.subTest(autocrlf=autocrlf):
+                    checkout=Path(tmp)/('checkout-'+autocrlf)
+                    git('-c','core.autocrlf='+autocrlf,'checkout-index','--all',
+                        '--prefix='+checkout.as_posix()+'/')
+                    actual=(checkout/relative).read_bytes()
+                    self.assertEqual(actual,expected)
+                    self.assertNotIn(b'\r\n',actual)
+                    self.assertEqual(hashlib.sha256(actual).hexdigest(),audit['financial_source_sha256'])
+
+    def test_offline_page_is_self_contained(self):
+        page=(SITE/'offline.html').read_text(encoding='utf-8')
+        self.assertIn('window.AERORISK_EVIDENCE',page)
+        self.assertNotIn('src="data/evidence.js"',page)
+        self.assertNotIn('href="styles.css"',page)
+        self.assertIn('window.AERORISK_FINANCE',page)
+        self.assertIn('Air Côte d’Ivoire revenue and net income',page)
+        self.assertNotIn('src="data/finance.js"',page)
+        self.assertNotIn('src="data/airline-financials.svg"',page)
+        from html.parser import HTMLParser
+        from urllib.parse import unquote
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__(); self.links=[]
+            def handle_starttag(self, tag, attrs):
+                if tag=='a': self.links.append(dict(attrs))
+        links=Links(); links.feed(page)
+        downloads=[a for a in links.links if a.get('download')=='evidence.json']
+        self.assertEqual(len(downloads),1)
+        href=downloads[0]['href']
+        self.assertTrue(href.startswith('data:application/json;charset=utf-8,'))
+        self.assertEqual(json.loads(unquote(href.split(',',1)[1])),json.loads(SOURCE.read_text(encoding='utf-8-sig')))
+        self.assertIn('href="#top">返回页首',page)
+        self.assertNotIn('offline-help',page)
+        self.assertNotIn('查看离线说明',page)
+        self.assertNotIn('查看操作说明',page)
+        self.assertNotIn('href="#top">下载离线单页',page)
+        self.assertNotIn('href="#method">查看操作说明',page)
+
+
+if __name__=='__main__':unittest.main()

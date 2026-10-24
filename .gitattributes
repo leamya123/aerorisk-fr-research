@@ -1,0 +1,8 @@
+data/processed/** text eol=lf
+studies/fifth_freedom_bj_sn/outputs/** text eol=lf
+v3/** text eol=lf
+
+v3/screenshots/*.png binary
+
+# The v3 audit hashes these source bytes; keep identical on Windows and Linux.
+data/official/airline_financials_candidate_v1.csv text eol=lf

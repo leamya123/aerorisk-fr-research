@@ -9,8 +9,12 @@ For central-bank policy-only comparison, do not exclude these periods.
 Lag k correlates current outcome ΔY_t with prior explanatory ΔX_(t-k).
 """
 import csv
+import sys
 import math
 from pathlib import Path
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT=Path(__file__).resolve().parents[1]
 PANEL=ROOT/"data/processed/quarterly_policy_lending_panel_v1.csv"
